@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Success</title>
 </head>
 <body>
-	<h2>Hello word...</h2>
-	<br />
-	<a href="index">Click here for the Employee Form</a>
-	<br />
-	<a href="login">Click to Login</a>
+	<h3>Login SUCCESS!!!</h3>
 </body>
 </html>

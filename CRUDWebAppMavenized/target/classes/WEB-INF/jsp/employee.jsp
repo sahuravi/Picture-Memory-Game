@@ -13,31 +13,39 @@
 		<table>
 			<tr>
 				<td>Employee Id</td>
-				<td><form:input path="employeeId"/></td>
+				<td colspan='3'><form:input path="employeeId"/></td>
 			</tr>
 			<tr>
-				<td>First name</td>
-				<td><form:input path="firstName"/></td>
+				<td>First Name</td>
+				<td colspan='3'><form:input path="firstName"/></td>
 			</tr>
 			<tr>
 				<td>Last Name</td>
-				<td><form:input path="lastName"/></td>
+				<td colspan='3'><form:input path="lastName"/></td>
 			</tr>
 			<tr>
 				<td>Company</td>
-				<td><form:input path="company"/></td>
+				<td colspan='3'><form:input path="company"/></td>
 			</tr>
+			<tr><td></td></tr>
 			<tr>
-				<td colspan="2">
+				<td>
 					<input type="submit" name="action" value="Add" />
+				</td>
+				<td>
 					<input type="submit" name="action" value="Edit" />
+				</td>
+				<td>
 					<input type="submit" name="action" value="Delete" />
+				</td>
+				<td>
 					<input type="submit" name="action" value="Search" />
 				</td>
 			</tr>
 		</table>
 	</form:form>
-	
+	<br />
+	<br />
 	<table border="1">
 		<thead>
 			<th>ID</th>

@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello word...
+	<h2>Hello word...</h2>
+	<br />
+	<a href="index">Click here for the Employee Form</a>
+	<br />
+	<a href="login">Click to Login</a>
 </body>
 </html>

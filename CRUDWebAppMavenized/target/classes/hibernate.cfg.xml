@@ -6,6 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Names the annotated entity class -->
-        <mapping class="com.ravi.model.Employee" />
+        <mapping class="com.ravi.crud.model.Employee" />
+        <mapping class="com.ravi.user.model.UserRegisterModel" />
     </session-factory>
 </hibernate-configuration>

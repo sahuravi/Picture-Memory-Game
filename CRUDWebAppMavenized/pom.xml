@@ -55,8 +55,7 @@
             <artifactId>spring-orm</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-        <!-- Spring Dependency ends -->
-		
+        
         <!-- Hibernate Dependency -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -83,24 +82,16 @@
             <artifactId>hibernate-core</artifactId>
             <version>3.3.2.GA</version>
         </dependency>
-		<!-- Hibernate Dependency Ends -->
-		
-		<!-- JSP Taglib Dependency -->
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
-		<!-- JSP Taglib Dependency Ends -->
-		
-		<!-- Servlet Dependency -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.1.2</version>
         </dependency>
-		<!-- JSP Taglib Dependency Ends -->
-		
         <!-- <dependency>
 		  	<groupId>javax.servlet</groupId>
 		  	<artifactId>javax.servlet-api</artifactId>
