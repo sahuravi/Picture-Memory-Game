@@ -1,0 +1,12 @@
+127.0.0.1 - - [27/Aug/2015:18:38:23 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:38:25 +0530] "GET /CRUDWebAppMavenized/ HTTP/1.1" 200 398
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:38:33 +0530] "GET /CRUDWebAppMavenized/ HTTP/1.1" 200 398
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:38:35 +0530] "GET /CRUDWebAppMavenized/login HTTP/1.1" 200 1168
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:38:39 +0530] "GET /CRUDWebAppMavenized/index HTTP/1.1" 200 2051
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:05 +0530] "POST /CRUDWebAppMavenized/employee.do HTTP/1.1" 200 2180
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:15 +0530] "POST /CRUDWebAppMavenized/employee.do HTTP/1.1" 200 2161
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:24 +0530] "POST /CRUDWebAppMavenized/employee.do HTTP/1.1" 200 2180
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:30 +0530] "GET /CRUDWebAppMavenized/login HTTP/1.1" 200 1168
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:32 +0530] "GET /CRUDWebAppMavenized/userRegistrationPage HTTP/1.1" 200 1042
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:36 +0530] "GET /CRUDWebAppMavenized/ HTTP/1.1" 200 398
+0:0:0:0:0:0:0:1 - - [27/Aug/2015:18:39:36 +0530] "GET /CRUDWebAppMavenized/ HTTP/1.1" 200 398

@@ -9,35 +9,43 @@
 </head>
 <body>
 	<h1>Employee Data</h1>
-	<form:form action="employee.do" method="POST">
+	<form:form action="employee.do" method="POST" commandName="employee">
 		<table>
 			<tr>
 				<td>Employee Id</td>
-				<td><form:input path="employeeId"/></td>
+				<td colspan='3'><form:input path="employeeId"/></td>
 			</tr>
 			<tr>
-				<td>First name</td>
-				<td><form:input path="firstName"/></td>
+				<td>First Name</td>
+				<td colspan='3'><form:input path="firstName"/></td>
 			</tr>
 			<tr>
 				<td>Last Name</td>
-				<td><form:input path="lastLame"/></td>
+				<td colspan='3'><form:input path="lastName"/></td>
 			</tr>
 			<tr>
-				<td>Year</td>
-				<td><form:input path="company"/></td>
+				<td>Company</td>
+				<td colspan='3'><form:input path="company"/></td>
 			</tr>
+			<tr><td></td></tr>
 			<tr>
-				<td colspan="2">
+				<td>
 					<input type="submit" name="action" value="Add" />
+				</td>
+				<td>
 					<input type="submit" name="action" value="Edit" />
+				</td>
+				<td>
 					<input type="submit" name="action" value="Delete" />
+				</td>
+				<td>
 					<input type="submit" name="action" value="Search" />
 				</td>
 			</tr>
 		</table>
 	</form:form>
-	
+	<br />
+	<br />
 	<table border="1">
 		<thead>
 			<th>ID</th>
@@ -47,10 +55,12 @@
 		</thead>
 		<tbody>
 			<c:forEach items="${employeeList}" var="employee">
-				<tr>${employee.employeeId}</tr>
-				<tr>${employee.fistName}</tr>
-				<tr>${employee.lastName}</tr>
-				<tr>${employee.company}</tr>
+				<tr>
+					<td>${employee.employeeId}</td>
+					<td>${employee.firstName}</td>
+					<td>${employee.lastName}</td>
+					<td>${employee.company}</td>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
