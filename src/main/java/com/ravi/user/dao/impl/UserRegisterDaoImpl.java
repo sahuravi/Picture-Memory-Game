@@ -1,7 +1,5 @@
 package com.ravi.user.dao.impl;
 
-import java.util.List;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,7 +16,6 @@ public class UserRegisterDaoImpl implements UserRegisterDao {
 	@Override
 	public void addUser(UserRegisterModel userModel) {
 		session.getCurrentSession().save(userModel);
-
 	}
 
 	@Override

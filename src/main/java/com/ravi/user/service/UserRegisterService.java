@@ -1,7 +1,5 @@
 package com.ravi.user.service;
 
-import java.util.List;
-
 import com.ravi.user.model.UserRegisterModel;
 
 public interface UserRegisterService {

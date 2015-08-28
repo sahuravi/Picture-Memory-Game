@@ -30,7 +30,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/dashboard.do", method=RequestMethod.POST)
-	public String validateUser(@ModelAttribute UserRegisterModel loginmodel, BindingResult result, @RequestParam String password) {
+	public String validateUser(@ModelAttribute("loginmodel") UserRegisterModel loginmodel, BindingResult result, @RequestParam String password) {
 		
 		UserRegisterModel logincredentials = userService.getLoginCredentials(loginmodel.getUserName());
 		String salt = logincredentials.getSalt();
@@ -58,7 +58,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/registerUser")
-	public String submitUserDetails(@ModelAttribute UserRegisterModel registerUser, BindingResult result, @RequestParam Map<String, String> params, Map<String, Object> map) {
+	public String submitUserDetails(@ModelAttribute("userRegisterModel") UserRegisterModel registerUser, BindingResult result, @RequestParam Map<String, String> params, Map<String, Object> map) {
 		
 		String password = params.get("password");
 		try {

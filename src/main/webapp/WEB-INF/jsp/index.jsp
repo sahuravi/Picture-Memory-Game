@@ -12,5 +12,8 @@
 	<a href="index">Click here for the Employee Form</a>
 	<br />
 	<a href="login">Click to Login</a>
+	<br>
+	<br>
+	<a href="userRegistrationPage">Register Here!</a>
 </body>
 </html>

@@ -26,7 +26,7 @@ public class UserRegisterModel {
 	private String salt;
 	
 	@Column(name="user_mobile")
-	private String mobileNumber;
+	private int mobileNumber;
 	
 	@Column(name="hashed_password")
 	private String hashedPassword;
@@ -71,13 +71,14 @@ public class UserRegisterModel {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-	
-	public String getMobileNumber() {
+
+	public int getMobileNumber() {
 		return mobileNumber;
 	}
-	
-	public void setMobileNumber(String mobileNumber) {
+
+	public void setMobileNumber(int mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+	
 	
 }
