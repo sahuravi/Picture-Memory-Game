@@ -1,1 +1,7 @@
 /target
+*.project
+.metadata/
+*.classpath
+*.gitignore
+*.jsdtscope
+ServletsDemo/.settings/
