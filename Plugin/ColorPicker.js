@@ -40,6 +40,14 @@ if(typeof Object.create !== 'function') {
             
             var $colorGridImage = $("<img/>", {class: 'color-grid-image', src: options.gridImgURL, usemap: '#colormap', alt: 'colormap'});
             self.$elem.append($colorGridImage);
+            self.$elem.css({
+                margin: 'auto',
+                width: '236px',
+                position: 'absolute',
+                top: '65px',
+                left: '20px'
+            });
+            
 
             var $map = $("<map/>", {id: 'colormap', name: 'colormap'});
             self.$elem.append($map);
@@ -59,14 +67,14 @@ if(typeof Object.create !== 'function') {
 
             $map.on('click', 'area', function(event) {
 
-                self.$OKBtn.setData({enable: true});
+                
                 var $this = $(this);
                 var hex = $this.attr("hexagonColor");
                 var topOfClickedArea = parseInt($this.attr("y"));
                 var leftOfClickedArea = parseInt($this.attr("x"));
                 var indexOfClickedArea = parseInt($this.attr("index"));
 
-                var $selectedHexagon = self.$thisCompElement.find("#selectedhexagon");
+                var $selectedHexagon = self.$elem.find("#selectedhexagon");
                 if ((topOfClickedArea + 200) > -1 && leftOfClickedArea > -1) {
                     $selectedHexagon.css({
                         "top": topOfClickedArea -3,
@@ -94,7 +102,7 @@ if(typeof Object.create !== 'function') {
                 'left': self.colorGridJsonData[self.selectedIndex - 1].x + "px",
                 'pointer-events': 'none'
             });
-            debugger;
+            
             self.$elem.append($selectedHexagon);
             $selectedHexagon.focus();
 
