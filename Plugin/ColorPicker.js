@@ -86,12 +86,12 @@ if(typeof Object.create !== 'function') {
             var $selectedHexagon = $("<div/>", {id:'selectedhexagon', class: "selected-hexagon", tabindex: "1", index: "1"});
             $selectedHexagon.css({
                 'background-image': 'url(' + options.selectionImgURL + ')',
-                'visibility': visible,
-                'position': relative,
+                'visibility': 'visible',
+                'position': 'relative',
                 'width': '25px',
                 'height': '27px',
-                'top': self.colorGridJsonData[self.selectedIndex - 1].y,
-                'left': self.colorGridJsonData[self.selectedIndex - 1].x,
+                'top': self.colorGridJsonData[self.selectedIndex - 1].y + "px",
+                'left': self.colorGridJsonData[self.selectedIndex - 1].x + "px",
                 'pointer-events': 'none'
             });
             debugger;
