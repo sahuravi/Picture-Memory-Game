@@ -15,13 +15,8 @@ if(typeof Object.create !== 'function') {
 
             if(typeof options !== 'string'){
                 self.options = $.extend({}, $.fn.colorGrid.options, options);
-                self.gridImgURL = self.options.gridImgURL;
-                self.jsonURL = self.options.jsonURL;
-                self.selectionImgURL = self.options.selectionImgURL;
-                self.selectedIndex = self.options.selectedIndex;
-
                 $.ajax({
-                    url: self.jsonURL,
+                    url: self.options.jsonURL,
                     dataType: "json",
                     success: function(response) {
                         self.colorGridJsonData = response;
@@ -35,30 +30,31 @@ if(typeof Object.create !== 'function') {
         },
         createGrid: function() {
             var self = this;
-            var $colorGridImage = $("<img/>", {class: 'color-grid-image', src: self.gridImgURL, usemap: '#colormap', alt: 'colormap'});
+            var $colorGridImage = $("<img/>", {class: 'color-grid-image', src: self.options.gridImgURL, usemap: '#colormap', alt: 'colormap'});
             self.$elem.append($colorGridImage);
             self.$elem.css({
                 margin: 'auto',
                 width: '236px'
             });
 
+            //Creation of map.
             var $map = self.createMap();
             self.areaArray = $map.find('area');
             self.$elem.append($map);
 
+            //Creation of div which will show the current selected color.
             var $selectedHexagon = self.createSelectorDiv();
             self.$elem.append($selectedHexagon);
             $selectedHexagon.focus();
 
+            //Creation of preview div which will contain the selected color.
             var $previeDiv = self.createPrviewDiv();
             self.$elem.append($previeDiv);
 
             $selectedHexagon.on('keydown', function(event) {
-                
                 var $this = $(this);
                 var currentSelectedIndex = parseInt($this.attr('itemIndex'));
                 var nextIndex;
-
                 var $selectElement = null;
                 var seltop = null;
                 var selleft = null;
@@ -133,20 +129,18 @@ if(typeof Object.create !== 'function') {
                 $previeDiv.css("background-color", hex);
                 self.colorGridSelectedIndex = nextIndex;
                 $this.focus();
-                
                 event.stopPropagation();
                 event.preventDefault();
             });
 
             $map.on('click', 'area', function(event) {
-
                 var $this = $(this);
                 var hex = $this.attr("hexagonColor");
                 var topOfClickedArea = parseInt($this.attr("y"));
                 var leftOfClickedArea = parseInt($this.attr("x"));
                 var indexOfClickedArea = parseInt($this.attr("itemIndex"));
-
                 var $selectedHexagon = self.$elem.find("#selectedhexagon");
+
                 if ((topOfClickedArea + 200) > -1 && leftOfClickedArea > -1) {
                     $selectedHexagon.css({
                         "top": topOfClickedArea -7,
@@ -183,15 +177,15 @@ if(typeof Object.create !== 'function') {
         },
         createSelectorDiv: function (argument) {
             var self = this;
-            var $selectedHexagon = $("<div/>", {id:'selectedhexagon', class: "selected-hexagon", tabindex: "1", itemIndex: self.selectedIndex});
+            var $selectedHexagon = $("<div/>", {id:'selectedhexagon', class: "selected-hexagon", tabindex: "1", itemIndex: self.options.selectedIndex});
             $selectedHexagon.css({
-                'background-image': 'url(' + self.selectionImgURL + ')',
+                'background-image': 'url(' + self.options.selectionImgURL + ')',
                 'visibility': 'visible',
                 'position': 'relative',
                 'width': '25px',
                 'height': '27px',
-                'top': self.colorGridJsonData[self.selectedIndex - 1].y - 7 + "px",
-                'left': self.colorGridJsonData[self.selectedIndex - 1].x - 3 + "px",
+                'top': self.colorGridJsonData[self.options.selectedIndex - 1].y - 7 + "px",
+                'left': self.colorGridJsonData[self.options.selectedIndex - 1].x - 3 + "px",
                 'pointer-events': 'none',
                 'outline': '0'
             });
@@ -201,7 +195,7 @@ if(typeof Object.create !== 'function') {
             var self = this;
             var $previeDiv = $("<div/>", {id:'previewDiv', class: "preveiw-div"});
             $previeDiv.css({
-                'background-color': self.colorGridJsonData[self.selectedIndex - 1].hexagonColor,
+                'background-color': self.colorGridJsonData[self.options.selectedIndex - 1].hexagonColor,
                 'width': '40%',
                 'height': '40px',
                 'margin': '0 auto'
