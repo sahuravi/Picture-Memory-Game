@@ -48,9 +48,12 @@ if(typeof Object.create !== 'function') {
             $selectedHexagon.focus();
 
             //Creation of preview div which will contain the selected color.
-            var $previeDiv = self.createPrviewDiv();
-            self.$elem.append($previeDiv);
-
+            var $previeDiv;
+            if(self.options.showPreviewDiv === true || self.options.showPreviewDiv === 'true') {
+                $previeDiv = self.createPrviewDiv();
+                self.$elem.append($previeDiv);
+            }
+                
             $selectedHexagon.on('keydown', function(event) {
                 var $this = $(this);
                 var currentSelectedIndex = parseInt($this.attr('itemIndex'));
@@ -126,7 +129,9 @@ if(typeof Object.create !== 'function') {
                     $this.attr("itemIndex", nextIndex);
                 }
 
-                $previeDiv.css("background-color", hex);
+                if($previeDiv !== undefined && $previeDiv !== null) {
+                    $previeDiv.css("background-color", hex);
+                }
                 self.colorGridSelectedIndex = nextIndex;
                 $this.focus();
                 event.stopPropagation();
@@ -150,7 +155,9 @@ if(typeof Object.create !== 'function') {
                     $selectedHexagon.attr("itemIndex", indexOfClickedArea);
                 }
                 
-                $previeDiv.css("background-color", hex);
+                if($previeDiv !== undefined && $previeDiv !== null) {
+                    $previeDiv.css("background-color", hex);
+                }
                 $selectedHexagon.focus();
                 self.colorGridSelectedIndex = indexOfClickedArea;
             });
@@ -215,6 +222,7 @@ if(typeof Object.create !== 'function') {
         gridImgURL: 'img/img_colormap.png',
         jsonURL: 'data/ColorGridData.json',
         selectionImgURL: 'img/img_selectedcolor.png',
-        selectedIndex: '2'
+        selectedIndex: '2',
+        showPreviewDiv: true
     };
 })(jQuery, window, document);
