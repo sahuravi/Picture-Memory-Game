@@ -37,7 +37,8 @@ if(typeof Object.create !== 'function') {
                     success: function(response) {
                         self.colorGridJsonData = response;
                         self.createGrid(function($svgElement) {
-                            self.$elem.html(self.$elem.html());
+                            //self.$elem.html(self.$elem.html());
+                            //self.$elem.html(self.$elem.html());
                             debugger;
                             self.bindClickOnSVG();
                         });
@@ -51,10 +52,10 @@ if(typeof Object.create !== 'function') {
         createGrid: function(callback) {
             var self = this;
 
-            var $svgElement = $("<svg>", {class: 'color-grid-svg'});
+            var $svgElement = self.createSVGElement("svg", {class: 'color-grid-svg'});
             var $polygonElement = null;
             for (var i = 0; i < self.colorGridJsonData.length; i++) {
-                $polygonElement = $("<polygon>", {
+                $polygonElement = self.createSVGElement("polygon", {
                     points: self.colorGridJsonData[i].coords,
                     x: self.colorGridJsonData[i].x,
                     y: self.colorGridJsonData[i].y,
@@ -89,7 +90,7 @@ if(typeof Object.create !== 'function') {
                 $previeDiv = self.createPrviewDiv();
                 self.$elem.append($previeDiv);
             }
-
+            self.bindClickOnSVG();
             // $selectedHexagon.on('keydown', function(event) {
             //     var $this = $(this);
             //     var currentSelectedIndex = parseInt($this.attr('itemIndex'));
@@ -176,24 +177,38 @@ if(typeof Object.create !== 'function') {
 debugger;
             //$svgElement = self.$elem.find("svg.color-grid-svg > *");
 
-            callback($svgElement);
-
-
+            //callback($svgElement);
         },
         createSelectorDiv: function () {
             var self = this;
-            var $selectedHexagon = $("<div/>", {id:'selectedhexagon', class: "selected-hexagon", tabindex: "1", itemIndex: self.options.selectedIndex});
-            $selectedHexagon.css({
-                'background-image': 'url(' + self.options.selectionImgURL + ')',
-                'visibility': 'visible',
-                'position': 'relative',
-                'width': '25px',
-                'height': '27px',
-                'top': self.colorGridJsonData[self.options.selectedIndex - 1].y - 8 + "px",
-                'left': self.colorGridJsonData[self.options.selectedIndex - 1].x - 3 + "px",
-                'pointer-events': 'none',
-                'outline': '0'
+            var $selectedHexagon = self.createSVGElement("polygon", {
+                id:'selectedhexagon',
+                class: "selected-hexagon",
+                tabindex: "1",
+                itemIndex: self.options.selectedIndex,
+                points: self.colorGridJsonData[self.options.selectedIndex - 1].coords
             });
+            $selectedHexagon.css("fill", "green");
+            // $selectedHexagon.css({
+            //     'background-image': 'url(' + self.options.selectionImgURL + ')',
+            //     'visibility': 'visible',
+            //     'position': 'relative',
+            //     'width': '25px',
+            //     'height': '27px',
+            //     'top': self.colorGridJsonData[self.options.selectedIndex - 1].y - 8 + "px",
+            //     'left': self.colorGridJsonData[self.options.selectedIndex - 1].x - 3 + "px",
+            //     'pointer-events': 'none',
+            //     'outline': '0'
+            // });
+            // $("<polygon>", {
+            //     points: self.colorGridJsonData[i].coords,
+            //     x: self.colorGridJsonData[i].x,
+            //     y: self.colorGridJsonData[i].y,
+            //     itemIndex: self.colorGridJsonData[i].index,
+            //     hexagonColor: self.colorGridJsonData[i].hexagonColor,
+            //     group: self.colorGridJsonData[i].group
+            // });
+
             return $selectedHexagon;
         },
         createPrviewDiv: function(argument) {
@@ -232,6 +247,13 @@ debugger;
                 $selectedHexagon.focus();
                 self.colorGridSelectedIndex = indexOfClickedArea;
             });
+        },
+        createSVGElement: function(tag, attrs) {
+            debugger;
+            var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
+            for (var k in attrs)
+                el.setAttribute(k, attrs[k]);
+            return $(el);
         }
     };
 })(jQuery, window, document);
