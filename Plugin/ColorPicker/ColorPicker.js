@@ -7,6 +7,22 @@ if(typeof Object.create !== 'function') {
 }
 
 (function($, window, document, undefined){
+
+    $.fn.colorGrid = function(options) {
+        return this.each(function() {
+            var grid = Object.create(Grid);
+            grid.init(options, this);
+        });
+    };
+
+    $.fn.colorGrid.options = {
+        gridImgURL: 'img/img_colormap.png',
+        jsonURL: 'data/ColorGridData.json',
+        selectionImgURL: 'img/img_selectedcolor.png',
+        selectedIndex: '2',
+        showPreviewDiv: true
+    };
+    
     var Grid = {
         init: function(options, elem) {
             var self = this;
@@ -53,7 +69,7 @@ if(typeof Object.create !== 'function') {
                 $previeDiv = self.createPrviewDiv();
                 self.$elem.append($previeDiv);
             }
-                
+
             $selectedHexagon.on('keydown', function(event) {
                 var $this = $(this);
                 var currentSelectedIndex = parseInt($this.attr('itemIndex'));
@@ -73,7 +89,7 @@ if(typeof Object.create !== 'function') {
                         groupId = $selectElement.attr("group");
                         customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
                         curIndex = customArray.index($selectElement);
-                        
+
                         if(curIndex === 0) {
                             curIndex = 5 - parseInt(groupId);
                             customArray = self.areaArray.parent().find("area[group='" + 13 + "']");
@@ -91,7 +107,7 @@ if(typeof Object.create !== 'function') {
                         groupId = $selectElement.attr("group");
                         customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
                         curIndex = customArray.index($selectElement);
-                        
+
                         if(curIndex === customArray.length - 1) {
                             if(groupId <= 7) {
                                 $nextElement = $(self.areaArray[currentSelectedIndex]);
@@ -154,7 +170,7 @@ if(typeof Object.create !== 'function') {
                     });
                     $selectedHexagon.attr("itemIndex", indexOfClickedArea);
                 }
-                
+
                 if($previeDiv !== undefined && $previeDiv !== null) {
                     $previeDiv.css("background-color", hex);
                 }
@@ -209,20 +225,5 @@ if(typeof Object.create !== 'function') {
             });
             return $previeDiv;
         }
-    };
-
-    $.fn.colorGrid = function(options) {
-        return this.each(function() {
-            var grid = Object.create(Grid);
-            grid.init(options, this);
-        });
-    };
-
-    $.fn.colorGrid.options = {
-        gridImgURL: 'img/img_colormap.png',
-        jsonURL: 'data/ColorGridData.json',
-        selectionImgURL: 'img/img_selectedcolor.png',
-        selectedIndex: '2',
-        showPreviewDiv: true
     };
 })(jQuery, window, document);
