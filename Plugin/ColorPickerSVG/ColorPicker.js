@@ -36,12 +36,7 @@ if(typeof Object.create !== 'function') {
                     dataType: "json",
                     success: function(response) {
                         self.colorGridJsonData = response;
-                        self.createGrid(function($svgElement) {
-                            //self.$elem.html(self.$elem.html());
-                            //self.$elem.html(self.$elem.html());
-                            debugger;
-                            self.bindClickOnSVG();
-                        });
+                        self.createGrid();
                     },
                     error: function(error) {
                         console.log(error);
@@ -67,22 +62,25 @@ if(typeof Object.create !== 'function') {
                 $svgElement.append($polygonElement);
             }
             self.$elem.append($svgElement);
-            // var $colorGridImage = $("<img/>", {class: 'color-grid-image', src: self.options.gridImgURL, usemap: '#colormap', alt: 'colormap'});
-            // self.$elem.append($colorGridImage);
-            // self.$elem.css({
-            //     margin: 'auto',
-            //     width: '236px'
-            // });
-            //
-            // //Creation of map.
-            // var $map = self.createMap();
-            // self.areaArray = $map.find('area');
-            // self.$elem.append($map);
-
-            //Creation of div which will show the current selected color.
-            var $selectedHexagon = self.createSelectorDiv();
-            self.$elem.append($selectedHexagon);
-            $selectedHexagon.focus();
+            
+            //Creation of selector element which will show the current selected color.
+            //var $selectedHexagon = self.createSelectorSVG();
+            var $selectorSvgElement = self.createSVGElement("svg", {class: 'color-selector-svg'});
+            var $selectedHexagon = self.createSVGElement("polygon", {
+                id:'selectedhexagon',
+                class: "selected-hexagon",
+                tabindex: "1",
+                itemIndex: self.options.selectedIndex,
+                points: self.colorGridJsonData[self.options.selectedIndex - 1].coords
+            });
+            $selectedHexagon.css({
+                "fill": "#336699",
+                "stroke": "red",
+                "stroke-width": "4"
+            });
+            $selectorSvgElement.append($selectedHexagon);
+            self.$elem.append($selectorSvgElement);
+            //$selectedHexagon.focus();
 
             //Creation of preview div which will contain the selected color.
             var $previeDiv;
@@ -90,96 +88,11 @@ if(typeof Object.create !== 'function') {
                 $previeDiv = self.createPrviewDiv();
                 self.$elem.append($previeDiv);
             }
-            self.bindClickOnSVG();
-            // $selectedHexagon.on('keydown', function(event) {
-            //     var $this = $(this);
-            //     var currentSelectedIndex = parseInt($this.attr('itemIndex'));
-            //     var nextIndex;
-            //     var $selectElement = null;
-            //     var seltop = null;
-            //     var selleft = null;
-            //     var hex = null;
-            //     var groupId;
-            //     var customArray;
-            //     var curIndex;
-            //     var $nextElement;
-            //
-            //     switch(event.keyCode){
-            //         case 38:
-            //             $selectElement = $(self.areaArray[currentSelectedIndex - 1]);
-            //             groupId = $selectElement.attr("group");
-            //             customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
-            //             curIndex = customArray.index($selectElement);
-            //
-            //             if(curIndex === 0) {
-            //                 curIndex = 5 - parseInt(groupId);
-            //                 customArray = self.areaArray.parent().find("area[group='" + 13 + "']");
-            //                 $nextElement = $(customArray[curIndex]);
-            //             }
-            //             else{
-            //                 $nextElement = $(customArray[curIndex - 1]);
-            //             }
-            //             break;
-            //         case 37:
-            //             $nextElement = $(self.areaArray[currentSelectedIndex - 2]);
-            //             break;
-            //         case 40:
-            //             $selectElement = $(self.areaArray[currentSelectedIndex - 1]);
-            //             groupId = $selectElement.attr("group");
-            //             customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
-            //             curIndex = customArray.index($selectElement);
-            //
-            //             if(curIndex === customArray.length - 1) {
-            //                 if(groupId <= 7) {
-            //                     $nextElement = $(self.areaArray[currentSelectedIndex]);
-            //                 }
-            //                 else {
-            //                     curIndex = 13 - parseInt(groupId) + 3;
-            //                     customArray = self.areaArray.parent().find("area[group='" + 1 + "']");
-            //                     $nextElement = $(customArray[curIndex - 1]);
-            //                 }
-            //             }
-            //             else{
-            //                 $nextElement = $(customArray[curIndex + 1]);
-            //             }
-            //             break;
-            //         case 39:
-            //             $nextElement = $(self.areaArray[currentSelectedIndex]);
-            //             break;
-            //         default:
-            //             break;
-            //     }
-            //
-            //     if($nextElement !== undefined && $nextElement.length > 0) {
-            //         hex = $nextElement.attr("hexagonColor");
-            //         seltop = parseInt($nextElement.attr("y"));
-            //         selleft = parseInt($nextElement.attr("x"));
-            //         nextIndex = parseInt($nextElement.attr("itemIndex"));
-            //     }
-            //
-            //     if(seltop !== null) {
-            //         $this.css({
-            //             "top": seltop -7,
-            //             "left": selleft -3,
-            //             "visibility": "visible"
-            //         });
-            //         $this.attr("itemIndex", nextIndex);
-            //     }
-            //
-            //     if($previeDiv !== undefined && $previeDiv !== null) {
-            //         $previeDiv.css("background-color", hex);
-            //     }
-            //     self.colorGridSelectedIndex = nextIndex;
-            //     $this.focus();
-            //     event.stopPropagation();
-            //     event.preventDefault();
-            // });
-debugger;
-            //$svgElement = self.$elem.find("svg.color-grid-svg > *");
 
-            //callback($svgElement);
+            self.bindClickOnSVG();
+            //self.bindKeyDown();
         },
-        createSelectorDiv: function () {
+        createSelectorSVG: function () {
             var self = this;
             var $selectedHexagon = self.createSVGElement("polygon", {
                 id:'selectedhexagon',
@@ -189,26 +102,6 @@ debugger;
                 points: self.colorGridJsonData[self.options.selectedIndex - 1].coords
             });
             $selectedHexagon.css("fill", "green");
-            // $selectedHexagon.css({
-            //     'background-image': 'url(' + self.options.selectionImgURL + ')',
-            //     'visibility': 'visible',
-            //     'position': 'relative',
-            //     'width': '25px',
-            //     'height': '27px',
-            //     'top': self.colorGridJsonData[self.options.selectedIndex - 1].y - 8 + "px",
-            //     'left': self.colorGridJsonData[self.options.selectedIndex - 1].x - 3 + "px",
-            //     'pointer-events': 'none',
-            //     'outline': '0'
-            // });
-            // $("<polygon>", {
-            //     points: self.colorGridJsonData[i].coords,
-            //     x: self.colorGridJsonData[i].x,
-            //     y: self.colorGridJsonData[i].y,
-            //     itemIndex: self.colorGridJsonData[i].index,
-            //     hexagonColor: self.colorGridJsonData[i].hexagonColor,
-            //     group: self.colorGridJsonData[i].group
-            // });
-
             return $selectedHexagon;
         },
         createPrviewDiv: function(argument) {
@@ -248,12 +141,97 @@ debugger;
                 self.colorGridSelectedIndex = indexOfClickedArea;
             });
         },
-        createSVGElement: function(tag, attrs) {
-            debugger;
-            var el= document.createElementNS('http://www.w3.org/2000/svg', tag);
-            for (var k in attrs)
-                el.setAttribute(k, attrs[k]);
-            return $(el);
+        createSVGElement: function(svgElementName, attrs) {
+            var svgElement = document.createElementNS('http://www.w3.org/2000/svg', svgElementName);
+            for (var k in attrs) {
+                svgElement.setAttribute(k, attrs[k]);
+            }
+            return $(svgElement);
+        },
+        bindKeyDown: function($svgElement) {
+            $selectedHexagon.on('keydown', function(event) {
+                var $this = $(this);
+                var currentSelectedIndex = parseInt($this.attr('itemIndex'));
+                var nextIndex;
+                var $selectElement = null;
+                var seltop = null;
+                var selleft = null;
+                var hex = null;
+                var groupId;
+                var customArray;
+                var curIndex;
+                var $nextElement;
+            
+                switch(event.keyCode){
+                    case 38:
+                        $selectElement = $(self.areaArray[currentSelectedIndex - 1]);
+                        groupId = $selectElement.attr("group");
+                        customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
+                        curIndex = customArray.index($selectElement);
+            
+                        if(curIndex === 0) {
+                            curIndex = 5 - parseInt(groupId);
+                            customArray = self.areaArray.parent().find("area[group='" + 13 + "']");
+                            $nextElement = $(customArray[curIndex]);
+                        }
+                        else{
+                            $nextElement = $(customArray[curIndex - 1]);
+                        }
+                        break;
+                    case 37:
+                        $nextElement = $(self.areaArray[currentSelectedIndex - 2]);
+                        break;
+                    case 40:
+                        $selectElement = $(self.areaArray[currentSelectedIndex - 1]);
+                        groupId = $selectElement.attr("group");
+                        customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
+                        curIndex = customArray.index($selectElement);
+            
+                        if(curIndex === customArray.length - 1) {
+                            if(groupId <= 7) {
+                                $nextElement = $(self.areaArray[currentSelectedIndex]);
+                            }
+                            else {
+                                curIndex = 13 - parseInt(groupId) + 3;
+                                customArray = self.areaArray.parent().find("area[group='" + 1 + "']");
+                                $nextElement = $(customArray[curIndex - 1]);
+                            }
+                        }
+                        else{
+                            $nextElement = $(customArray[curIndex + 1]);
+                        }
+                        break;
+                    case 39:
+                        $nextElement = $(self.areaArray[currentSelectedIndex]);
+                        break;
+                    default:
+                        break;
+                }
+            
+                if($nextElement !== undefined && $nextElement.length > 0) {
+                    hex = $nextElement.attr("hexagonColor");
+                    seltop = parseInt($nextElement.attr("y"));
+                    selleft = parseInt($nextElement.attr("x"));
+                    nextIndex = parseInt($nextElement.attr("itemIndex"));
+                }
+            
+                if(seltop !== null) {
+                    $this.css({
+                        "top": seltop -7,
+                        "left": selleft -3,
+                        "visibility": "visible"
+                    });
+                    $this.attr("itemIndex", nextIndex);
+                }
+            
+                if($previeDiv !== undefined && $previeDiv !== null) {
+                    $previeDiv.css("background-color", hex);
+                }
+                self.colorGridSelectedIndex = nextIndex;
+                $this.focus();
+                event.stopPropagation();
+                event.preventDefault();
+            });
         }
     };
 })(jQuery, window, document);
