@@ -5,3 +5,5 @@
 *.gitignore
 *.jsdtscope
 ServletsDemo/.settings/
+node_modules
+.gitignore

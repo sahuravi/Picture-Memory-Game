@@ -62,7 +62,7 @@ if(typeof Object.create !== 'function') {
                 $svgElement.append($polygonElement);
             }
             self.$elem.append($svgElement);
-            
+
             //Creation of selector element which will show the current selected color.
             //var $selectedHexagon = self.createSelectorSVG();
             var $selectorSvgElement = self.createSVGElement("svg", {class: 'color-selector-svg'});
@@ -161,14 +161,14 @@ if(typeof Object.create !== 'function') {
                 var customArray;
                 var curIndex;
                 var $nextElement;
-            
+
                 switch(event.keyCode){
                     case 38:
                         $selectElement = $(self.areaArray[currentSelectedIndex - 1]);
                         groupId = $selectElement.attr("group");
                         customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
                         curIndex = customArray.index($selectElement);
-            
+
                         if(curIndex === 0) {
                             curIndex = 5 - parseInt(groupId);
                             customArray = self.areaArray.parent().find("area[group='" + 13 + "']");
@@ -186,7 +186,7 @@ if(typeof Object.create !== 'function') {
                         groupId = $selectElement.attr("group");
                         customArray = self.areaArray.parent().find("area[group='" + groupId + "']");
                         curIndex = customArray.index($selectElement);
-            
+
                         if(curIndex === customArray.length - 1) {
                             if(groupId <= 7) {
                                 $nextElement = $(self.areaArray[currentSelectedIndex]);
@@ -207,14 +207,14 @@ if(typeof Object.create !== 'function') {
                     default:
                         break;
                 }
-            
+
                 if($nextElement !== undefined && $nextElement.length > 0) {
                     hex = $nextElement.attr("hexagonColor");
                     seltop = parseInt($nextElement.attr("y"));
                     selleft = parseInt($nextElement.attr("x"));
                     nextIndex = parseInt($nextElement.attr("itemIndex"));
                 }
-            
+
                 if(seltop !== null) {
                     $this.css({
                         "top": seltop -7,
@@ -223,7 +223,7 @@ if(typeof Object.create !== 'function') {
                     });
                     $this.attr("itemIndex", nextIndex);
                 }
-            
+
                 if($previeDiv !== undefined && $previeDiv !== null) {
                     $previeDiv.css("background-color", hex);
                 }
