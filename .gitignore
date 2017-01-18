@@ -1,10 +1,10 @@
 /target
-*.project
+
 .metadata/
-.classpath
+
 .gitignore
 .jsdtscope
-ServletsDemo/.settings/
+
 node_modules
 .gitignore
 target
