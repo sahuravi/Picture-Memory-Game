@@ -30,10 +30,11 @@ public class TextConverter {
 	    InputStream stream;
 	    stream = service.synthesize(text, Voice.EN_ALLISON, AudioFormat.WAV).execute();
 	    InputStream in = WaveUtils.reWriteWaveHeader(stream);
+	    
 	    File fileDirectory = new File(filePath);
-	    //fileDirectory.mkdirs();
 	    fileDirectory.getParentFile().mkdirs();
 	    fileDirectory.createNewFile();
+	    
 	    OutputStream out = new FileOutputStream(filePath);
 	    
 	    byte[] buffer = new byte[1024];
