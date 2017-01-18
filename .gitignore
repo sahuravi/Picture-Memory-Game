@@ -1,9 +1,11 @@
 /target
 *.project
 .metadata/
-*.classpath
-*.gitignore
-*.jsdtscope
+.classpath
+.gitignore
+.jsdtscope
 ServletsDemo/.settings/
 node_modules
 .gitignore
+target
+.settings
