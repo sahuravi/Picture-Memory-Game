@@ -1,7 +1,7 @@
 /target
 
 .metadata/
-
+*.wav
 .gitignore
 .jsdtscope
 

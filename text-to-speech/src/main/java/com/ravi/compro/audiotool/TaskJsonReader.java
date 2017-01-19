@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ravi;
+package com.ravi.compro.audiotool;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,13 +15,13 @@ import org.json.simple.parser.ParseException;
  *
  * @author RaviS
  */
-public class MyJsonReader {
+public class TaskJsonReader {
 
-    public static void main(String[] args) {
+    public static void readJson(String filePath) {
 	JSONParser parser = new JSONParser();
 
 	try {
-	    Object obj = parser.parse(new FileReader("D:\\Sim5serviceNew\\LevDis\\recording\\methodData\\GO16.WD.01.1A.03.T1.json"));
+	    Object obj = parser.parse(new FileReader(filePath));
 	    JSONObject jsonObject = (JSONObject) obj;
 	    JSONObject taskJsonObject = (JSONObject) jsonObject.get("discreteActions");
 	    String taskName = (String) jsonObject.get("taskid");
@@ -42,8 +42,8 @@ public class MyJsonReader {
 			JSONObject actionJsonObject = (JSONObject) actionObject;
 
 			String actionText = actionJsonObject.get("text").toString();
-			String filePath = taskName + "\\" + stepKeyString + "\\" + actionArrayKeyString + "." + actionKeyString + ".wav";
-			TextConverter.textConverter(actionText, filePath);
+			String destinationPath = taskName + "\\" + stepKeyString + "\\" + actionArrayKeyString + "." + actionKeyString + ".wav";
+			TextConverter.textConverter(actionText, destinationPath);
 		    }
 		}
 	    }
