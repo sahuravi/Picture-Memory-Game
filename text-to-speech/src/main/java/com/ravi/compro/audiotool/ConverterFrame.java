@@ -25,12 +25,12 @@ public class ConverterFrame implements ActionListener {
 
     JFrame frame = new JFrame();
 
-    JLabel textFieldLabel;
-    JTextField filePathTextField;
-    JButton BrowseButton;
+    JLabel sourceFileLabel, destinationFolderLabel;
+    JTextField sourceFileTextField, destinationFolderTextField;
+    JButton sourceFileBrowseButton, destinationFolderBrowseButton;
     JButton convertButton;
     JLabel imageIconLabel;
-    JLabel errorLabel;
+    JLabel sourceFileErrorLabel, destinationFolderErrorLabel;
 
     URL url;
     ImageIcon progressImageIcon;
@@ -38,32 +38,51 @@ public class ConverterFrame implements ActionListener {
 
     JFileChooser fileChooser;
     File file;
-    String filePath;
+    String sourceFilePath, destinationFolderPath;
 
     public ConverterFrame() {
 	frame.setTitle("Text to Audio");
 
-	textFieldLabel = new JLabel("File Path : ");
-	textFieldLabel.setBounds(15, 20, 250, 30);
-	frame.add(textFieldLabel);
+	sourceFileLabel = new JLabel("Source File Path: ");
+	sourceFileLabel.setBounds(50, 10, 250, 20);
+	frame.add(sourceFileLabel);
 
-	filePathTextField = new JTextField("");
-	filePathTextField.setBounds(90, 25, 250, 20);
-	frame.add(filePathTextField);
+	sourceFileTextField = new JTextField("");
+	sourceFileTextField.setBounds(50, 30, 300, 20);
+	frame.add(sourceFileTextField);
 
-	BrowseButton = new JButton("Browse...");
-	BrowseButton.setBounds(350, 25, 90, 20);
-	BrowseButton.addActionListener(this);
-	frame.add(BrowseButton);
+	sourceFileBrowseButton = new JButton("Browse...");
+	sourceFileBrowseButton.setBounds(360, 30, 90, 20);
+	sourceFileBrowseButton.addActionListener(this);
+	frame.add(sourceFileBrowseButton);
 
-	errorLabel = new JLabel("Please choose a correct file.");
-	errorLabel.setBounds(90, 37, 250, 30);
-	frame.add(errorLabel);
-	errorLabel.setForeground(Color.red);
-	errorLabel.setVisible(false);
+	sourceFileErrorLabel = new JLabel("Please choose a File.");
+	sourceFileErrorLabel.setBounds(50, 45, 250, 20);
+	frame.add(sourceFileErrorLabel);
+	sourceFileErrorLabel.setForeground(Color.red);
+	sourceFileErrorLabel.setVisible(false);
+
+	destinationFolderLabel = new JLabel("Destination Folder: ");
+	destinationFolderLabel.setBounds(50, 65, 250, 20);
+	frame.add(destinationFolderLabel);
+
+	destinationFolderTextField = new JTextField("");
+	destinationFolderTextField.setBounds(50, 85, 300, 20);
+	frame.add(destinationFolderTextField);
+
+	destinationFolderBrowseButton = new JButton("Browse...");
+	destinationFolderBrowseButton.setBounds(360, 85, 90, 20);
+	destinationFolderBrowseButton.addActionListener(this);
+	frame.add(destinationFolderBrowseButton);
+
+	destinationFolderErrorLabel = new JLabel("Please choose a Folder.");
+	destinationFolderErrorLabel.setBounds(50, 100, 250, 20);
+	frame.add(destinationFolderErrorLabel);
+	destinationFolderErrorLabel.setForeground(Color.red);
+	destinationFolderErrorLabel.setVisible(false);
 
 	convertButton = new JButton("Convert");
-	convertButton.setBounds(90, 65, 100, 20);
+	convertButton.setBounds(50, 125, 100, 20);
 	convertButton.addActionListener(this);
 	frame.add(convertButton);
 
@@ -74,9 +93,12 @@ public class ConverterFrame implements ActionListener {
 	imageIconLabel = new JLabel(progressImageIcon);
 	imageIconLabel.setBounds(200, 150, 100, 100);
 	frame.add(imageIconLabel);
-	//imageIconLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 	imageIconLabel.setVisible(false);
 
+	//imageIconLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+	//imageIconLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+	//sourceFileErrorLabel.setBorder(BorderFactory.createLineBorder(Color.black));
+	//destinationFolderErrorLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 	fileChooser = new JFileChooser("D:\\");
 	fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
@@ -94,59 +116,91 @@ public class ConverterFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-	if (e.getSource() == this.BrowseButton) {
-
-	    int x = fileChooser.showOpenDialog(null);
-	    file = fileChooser.getSelectedFile();
-	    filePath = file.getPath();
-
-	    if (x == JFileChooser.APPROVE_OPTION) {
-		//filesTextArea.setText("");	//To empty the textfield for the new files...
-		if (!file.isDirectory()) {
-		    errorLabel.setVisible(false);
-		    filePathTextField.setText(filePath);
-		} else {
-		    filePathTextField.setText("");
-		    errorLabel.setVisible(true);
-		}
-	    }
-	    if (x == JFileChooser.CANCEL_OPTION) {
-		try {
-		    //textField.setText("Please select a file/folder");
-		} catch (Exception ex) {
-		}
-	    }
+	if (e.getSource() == this.sourceFileBrowseButton) {
+	    this.sourceFileBrowseButtonHandler();
+	} else if (e.getSource() == this.destinationFolderBrowseButton) {
+	    this.destinationFolderBrowseButtonHandler();
 	} else if (e.getSource() == this.convertButton) {
-	    if (this.filePath != null) {
+	    this.convertButtonHandler();
+	}
+    }
 
-		final Thread successThread;
-		successThread = new Thread() {
-		    @Override
-		    public void run() {
-			try {
-			    imageIconLabel.setIcon(successImageIcon);
-			} catch (Exception ex) {
-			    ex.printStackTrace();
-			}
-		    }
-		};
+    public void sourceFileBrowseButtonHandler() {
 
-		Thread worker;
-		worker = new Thread() {
-		    @Override
-		    public void run() {
-			try {
-			    TaskJsonReader.readJson(filePath);
-			    successThread.start();
-			} catch (Exception ex) {
-			    ex.printStackTrace();
-			}
-		    }
-		};
-		worker.start();
-		
-		imageIconLabel.setVisible(true);
+	int x = fileChooser.showOpenDialog(null);
+	this.file = this.fileChooser.getSelectedFile();
+	this.sourceFilePath = this.file.getPath();
+
+	if (x == JFileChooser.APPROVE_OPTION) {
+	    if (!this.file.isDirectory()) {
+		this.sourceFileErrorLabel.setVisible(false);
+		this.sourceFileTextField.setText(sourceFilePath);
+	    } else {
+		this.sourceFileTextField.setText("");
+		this.sourceFileErrorLabel.setVisible(true);
 	    }
+	}
+	if (x == JFileChooser.CANCEL_OPTION) {
+	    try {
+		//textField.setText("Please select a file/folder");
+	    } catch (Exception ex) {
+	    }
+	}
+    }
+
+    public void destinationFolderBrowseButtonHandler() {
+	int x = this.fileChooser.showOpenDialog(null);
+	this.file = this.fileChooser.getSelectedFile();
+	this.destinationFolderPath = this.file.getPath();
+
+	if (x == JFileChooser.APPROVE_OPTION) {
+	    if (this.file.isDirectory()) {
+		this.destinationFolderErrorLabel.setVisible(false);
+		this.destinationFolderTextField.setText(this.destinationFolderPath);
+	    } else {
+		this.destinationFolderTextField.setText("");
+		this.destinationFolderErrorLabel.setVisible(true);
+	    }
+	}
+	if (x == JFileChooser.CANCEL_OPTION) {
+	    try {
+		//textField.setText("Please select a file/folder");
+	    } catch (Exception ex) {
+	    }
+	}
+    }
+
+    public void convertButtonHandler() {
+	final ConverterFrame obj = this;
+	if (obj.sourceFilePath != null) {
+
+	    final Thread successThread;
+	    successThread = new Thread() {
+		@Override
+		public void run() {
+		    try {
+			obj.imageIconLabel.setIcon(obj.successImageIcon);
+		    } catch (Exception ex) {
+			ex.printStackTrace();
+		    }
+		}
+	    };
+
+	    Thread worker;
+	    worker = new Thread() {
+		@Override
+		public void run() {
+		    try {
+			TaskJsonReader.readJson(obj.sourceFilePath, obj.destinationFolderPath);
+			successThread.start();
+		    } catch (Exception ex) {
+			ex.printStackTrace();
+		    }
+		}
+	    };
+	    worker.start();
+
+	    obj.imageIconLabel.setVisible(true);
 	}
     }
 }

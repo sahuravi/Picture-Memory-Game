@@ -22,7 +22,7 @@ import java.io.OutputStream;
 public class TextConverter {
 
     @SuppressWarnings("ConvertToTryWithResources")
-    public static void textConverter(String text, String filePath) {
+    public static void convertTextToAudio(String text, String destinationFolderPath) {
 	TextToSpeech service = new TextToSpeech();
 	service.setUsernameAndPassword("19c61008-bbeb-4e90-aa43-83e01821da2d", "N0X6kAyl1lRt");
 
@@ -31,11 +31,11 @@ public class TextConverter {
 	    stream = service.synthesize(text, Voice.EN_ALLISON, AudioFormat.WAV).execute();
 	    InputStream in = WaveUtils.reWriteWaveHeader(stream);
 	    
-	    File fileDirectory = new File(filePath);
+	    File fileDirectory = new File(destinationFolderPath);
 	    fileDirectory.getParentFile().mkdirs();
 	    fileDirectory.createNewFile();
 	    
-	    OutputStream out = new FileOutputStream(filePath);
+	    OutputStream out = new FileOutputStream(destinationFolderPath);
 	    
 	    byte[] buffer = new byte[1024];
 	    int length;

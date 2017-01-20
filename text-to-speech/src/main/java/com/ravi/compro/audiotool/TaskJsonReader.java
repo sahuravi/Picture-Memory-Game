@@ -17,11 +17,11 @@ import org.json.simple.parser.ParseException;
  */
 public class TaskJsonReader {
 
-    public static void readJson(String filePath) {
+    public static void readJson(String sourceFilePath, String destinationFolderPath) {
 	JSONParser parser = new JSONParser();
 
 	try {
-	    Object obj = parser.parse(new FileReader(filePath));
+	    Object obj = parser.parse(new FileReader(sourceFilePath));
 	    JSONObject jsonObject = (JSONObject) obj;
 	    JSONObject taskJsonObject = (JSONObject) jsonObject.get("discreteActions");
 	    String taskName = (String) jsonObject.get("taskid");
@@ -42,8 +42,9 @@ public class TaskJsonReader {
 			JSONObject actionJsonObject = (JSONObject) actionObject;
 
 			String actionText = actionJsonObject.get("text").toString();
-			String destinationPath = taskName + "\\" + stepKeyString + "\\" + actionArrayKeyString + "." + actionKeyString + ".wav";
-			TextConverter.textConverter(actionText, destinationPath);
+			String destinationPath = destinationFolderPath;
+			destinationPath += "\\" + taskName + "\\" + stepKeyString + "\\" + actionArrayKeyString + "." + actionKeyString + ".wav";
+			TextConverter.convertTextToAudio(actionText, destinationPath);
 		    }
 		}
 	    }
