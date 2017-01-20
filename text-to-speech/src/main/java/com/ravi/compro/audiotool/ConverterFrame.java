@@ -134,7 +134,7 @@ public class ConverterFrame implements ActionListener {
 	if (x == JFileChooser.APPROVE_OPTION) {
 	    if (!this.file.isDirectory()) {
 		this.sourceFileErrorLabel.setVisible(false);
-		this.sourceFileTextField.setText(sourceFilePath);
+		this.sourceFileTextField.setText(this.sourceFilePath);
 	    } else {
 		this.sourceFileTextField.setText("");
 		this.sourceFileErrorLabel.setVisible(true);
@@ -171,7 +171,11 @@ public class ConverterFrame implements ActionListener {
     }
 
     public void convertButtonHandler() {
+	
 	final ConverterFrame obj = this;
+	obj.sourceFilePath = obj.sourceFileTextField.getText();
+	obj.destinationFolderPath = obj.destinationFolderTextField.getText();
+	
 	if (obj.sourceFilePath != null) {
 
 	    final Thread successThread;
