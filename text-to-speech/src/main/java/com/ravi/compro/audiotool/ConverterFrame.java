@@ -16,6 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import org.openide.util.ImageUtilities;
 
 /**
  *
@@ -87,9 +88,9 @@ public class ConverterFrame implements ActionListener {
 	frame.add(convertButton);
 
 	//url = this.getClass().getResource("loading.gif");
-	progressImageIcon = new ImageIcon("loading.gif");
-	successImageIcon = new ImageIcon("success.gif");
-
+	progressImageIcon = ImageUtilities.loadImageIcon("loading.gif", true);
+	successImageIcon = ImageUtilities.loadImageIcon("success.gif", true);
+	
 	imageIconLabel = new JLabel(progressImageIcon);
 	imageIconLabel.setBounds(200, 150, 100, 100);
 	frame.add(imageIconLabel);
