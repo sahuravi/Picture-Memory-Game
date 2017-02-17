@@ -1,7 +1,6 @@
 const Emp = require("../model/emp").emp;
 
 exports.create = function (req, res) {
-    debugger;
     let user = {
          name: req.body.username,
          organization: req.body.organization

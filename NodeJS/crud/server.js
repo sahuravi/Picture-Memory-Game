@@ -26,6 +26,5 @@ app.get("/create", function(req, res){
 });
 
 app.post("/addUser", urlencodedParser, function(req, res) {
-    debugger;
     userController.create(req, res);
 });
