@@ -1,0 +1,202 @@
+{
+   "Views": {
+      "View": [
+         {
+            "Id": "1",
+            "label": "Initial Doc Setting",
+            "description": "",
+            "comps": {
+               "comp": [
+                  {
+                     "Id": "1.1",
+                     "label": "Ribbon",
+                     "SIMSComponent": "SIMS.Components.Excel.Ribbon",
+                     "items": [
+                        {
+                           "Id": "1.1.1",
+                           "label": "Document Title",
+                           "description": "Name of the document to be displayed in Ribbon.",
+                           "info": "",
+                           "domType": "TextBox",
+                           "dataType": "text",
+                           "additional": false,
+                           "val": "Ravi",
+                           "warning": "",
+                           "mandatory": true
+                        },
+                        {
+                           "Id": "1.1.2",
+                           "label": "Font Name",
+                           "description": "",
+                           "info": "",
+                           "domType": "TextBox",
+                           "dataType": "text",
+                           "additional": true,
+                           "val": "",
+                           "warning": "Ravi1",
+                           "mandatory": true
+                        }
+                     ]
+                  },
+                  {
+                     "Id": "1.2",
+                     "label": "Workbook",
+                     "SIMSComponent": "SIMS.Components.Excel.JSONGrid",
+                     "items": [
+                        {
+                           "Id": "1.2.1",
+                           "label": "Document Data",
+                           "description": "",
+                           "info": "",
+                           "domType": "FileUploadBox",
+                           "dataType": "JSON",
+                           "placeHolder": "Drop JSON file here to upload",
+                           "eventRequired": "fileUpload",
+                           "val": "Ravi2",
+                           "warning": "",
+                           "mandatory": true
+                        },
+                        {
+                           "Id": "1.2.2",
+                           "label": "Worksheet Images",
+                           "description": "",
+                           "info": "",
+                           "domType": "TabGroup",
+                           "tabLayout": "horizontal | vertical",
+                           "disabled": true,
+                           "tabsData": [
+                              {
+                                 "headerName": "Sheet 1",
+                                 "pageData": {
+                                    "domType": "FileUploadBox",
+                                    "dropZoneDivisions": [
+                                       {
+                                          "Id": "GridImage",
+                                          "placeHolder": "Drop Grid Image",
+                                          "dataType": "img",
+                                          "pos": "x,y",
+                                          "dim": "h,w",
+                                          "val": {
+                                             "name": "",
+                                             "path": "",
+                                             "dbId": ""
+                                          }
+                                       },
+                                       {
+                                          "Id": "RowImage",
+                                          "placeHolder": "Drop Row Image",
+                                          "dataType": "img",
+                                          "pos": "x,y",
+                                          "dim": "h,w",
+                                          "val": {
+                                             "name": "",
+                                             "path": "",
+                                             "dbId": ""
+                                          }
+                                       },
+                                       {
+                                          "Id": "ColumnImage",
+                                          "placeHolder": "Drop Column Image",
+                                          "dataType": "img",
+                                          "pos": "x,y",
+                                          "dim": "h,w",
+                                          "val": {
+                                             "name": "",
+                                             "path": "",
+                                             "dbId": ""
+                                          }
+                                       },
+                                       {
+                                          "Id": "CellImage",
+                                          "placeHolder": "Drop Cell Image",
+                                          "dataType": "img",
+                                          "pos": "x,y",
+                                          "dim": "h,w",
+                                          "val": {
+                                             "name": "",
+                                             "path": "",
+                                             "dbId": ""
+                                          }
+                                       }
+                                    ]
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "Id": "1.3",
+                     "label": "Taskbar",
+                     "SIMSComponent": "SIMS.Components.Common.TaskBar",
+                     "items": [
+                        {
+                           "Id": "1.3.1",
+                           "label": "Taskbar Preview Image",
+                           "description": "",
+                           "info": "",
+                           "domType": "FileUploadBox",
+                           "dataType": "img",
+                           "placeHolder": "Drop image here to upload",
+                           "val": "Ravi3",
+                           "warning": "",
+                           "mandatory": true
+                        }
+                     ]
+                  },
+                  {
+                     "Id": "1.4",
+                     "label": "",
+                     "SIMSComponent": "",
+                     "additional": true,
+                     "items": [
+                        {
+                           "Id": "1.4.1"
+                        },
+                        {
+                           "Id": "1.4.2"
+                        }
+                     ]
+                  }
+               ]
+            }
+         },
+         {
+            "Id": "2",
+            "label": "Skill Related Inputs",
+            "description": "",
+            "comps": {
+               "comp": [
+                  {
+                     "Id": "2.1"
+                  },
+                  {
+                     "Id": "2.2"
+                  },
+                  {
+                     "Id": "2.3"
+                  }
+               ]
+            }
+         },
+         {
+            "Id": "3",
+            "label": "Final Doc Setting",
+            "description": "",
+            "comps": {
+               "comp": [
+                  {
+                     "Id": "3.1"
+                  },
+                  {
+                     "Id": "3.2"
+                  },
+                  {
+                     "Id": "3.3"
+                  }
+               ]
+            }
+         }
+      ]
+   }
+}

@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+const mapping = require("./jsonReader");
 
 app.get('/', function (req, res) {
   	res.send('Hello World!');
