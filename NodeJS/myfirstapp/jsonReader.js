@@ -5,7 +5,7 @@ const translators = require("./moveChellTranslators.js");
 
 let viewsArray = configJson.Views.View;
 
-const updateJson = function(mappingJson) {
+const updateJson = function(mappingJson, viewsArray) {
 	for(let state in mappingJson) {	//this loop is for each states.
 
 		let stateData = mappingJson[state];
@@ -91,6 +91,6 @@ let getValue = function(value) {
 	return value;
 }
 
-let updatedJson = updateJson(mappingJson);
+let updatedJson = updateJson(mappingJson, viewsArray);
 
 console.log(JSON.stringify(updatedJson));
