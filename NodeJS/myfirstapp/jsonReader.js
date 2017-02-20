@@ -2,7 +2,11 @@ let mappingJson = require("./moveChellMap.json");
 let configJson = require("./moveCellContentUiConfig.json");
 const translators = require("./moveChellTranslators.js");
 
+let obj = {};
 
+//obj.__proto__ = translators;
+obj.prototype = translators;
+debugger;
 let viewsArray = configJson.Views.View;
 
 const updateJson = function(mappingJson, viewsArray) {
@@ -34,9 +38,10 @@ const updateJson = function(mappingJson, viewsArray) {
 					if(value['function-name'] !== undefined) {
 						let functionName = value['function-name'];
 						let paramArray = value.params;
+						let functionParams = [];
 						for(param in paramArray) {
 							value = paramArray[param];
-							node[attrName].value = getValue(value);
+							functionParams.push(getValue(value))	;
 						}
 					}
 					else {

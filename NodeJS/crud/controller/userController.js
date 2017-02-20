@@ -17,7 +17,29 @@ exports.create = function (req, res) {
 
 /** getEmp function to get Emp by id. */
 exports.get = function (req, res) {
-    Emp.get({_id: req.params.id}, function(err, result) {
+    Emp.get({_id: ObjectId(req.body.userid)}, function(err, result) {
+        if (!err) {
+            return res.json(result);
+        } else {
+            return res.send(err);
+        }
+    });
+};
+
+/** getEmp function to get Emp by id. */
+exports.getById = function (req, res) {
+    Emp.getById(req.body.userid, function(err, user) {
+        if (!err) {
+            return res.json(user);
+        } else {
+            return res.send(err);
+        }
+    });
+};
+
+/** getEmp function to get Emp by id. */
+exports.getAll = function (req, res) {
+    Emp.getAll({}, function(err, result) {
         if (!err) {
             return res.json(result);
         } else {

@@ -10,7 +10,10 @@ empSchema.statics = {
         this.findOne(query, callback);
     },
     getAll: function(query, callback) {
-        this.find(query, callback);
+        this.find({}, callback);
+    },
+    getById: function(id, callback) {
+        this.findById(id, callback);
     },
     updateById: function(id, updateData, callback) {
         this.update(id, {$set: updateData}, callback);
@@ -24,8 +27,8 @@ empSchema.statics = {
     }
 };
 
-let employee = mongoose.model('emp', empSchema);
+let emp = mongoose.model('emp', empSchema);
 
 module.exports = {
-    emp: employee
+    emp
 };
