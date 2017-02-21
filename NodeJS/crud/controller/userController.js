@@ -8,7 +8,8 @@ exports.create = function (req, res) {
 
     Emp.create(user, function(err, result) {
         if (!err) {
-            return res.json(result);
+            // return res.json(result);
+            res.redirect('/getAllUser');
         } else {
             return res.send(err);
         }
@@ -16,19 +17,13 @@ exports.create = function (req, res) {
 };
 
 /** getEmp function to get Emp by id. */
-exports.get = function (req, res) {
-    Emp.get({_id: ObjectId(req.body.userid)}, function(err, result) {
-        if (!err) {
-            return res.json(result);
-        } else {
-            return res.send(err);
-        }
-    });
+exports.getUser = function (userid, res, callback) {
+    Emp.getById(userid, callback);
 };
 
 /** getEmp function to get Emp by id. */
-exports.getById = function (req, res) {
-    Emp.getById(req.body.userid, function(err, user) {
+exports.getById = function (userid, res) {
+    Emp.getById(userid, function(err, user) {
         if (!err) {
             return res.json(user);
         } else {
@@ -41,7 +36,7 @@ exports.getById = function (req, res) {
 exports.getAll = function (req, res) {
     Emp.getAll({}, function(err, result) {
         if (!err) {
-            return res.json(result);
+            return res.render('users', {users: result});
         } else {
             return res.send(err);
         }
@@ -50,9 +45,15 @@ exports.getAll = function (req, res) {
 
 /** updateEmp function to get Emp by id. */
 exports.update = function (req, res) {
-    Emp.updateById(req.params.id, req.body, function(err, result) {
+    let user = {};
+    user.name = req.body.username;
+    user.organization = req.body.company;
+    console.log(req.body.userid);
+
+    Emp.updateById({_id: req.body.userid}, user, function(err, result) {
         if (!err) {
-            return res.json(result);
+            // return res.json(result);
+            res.redirect('/getAllUser');
         } else {
             return res.send(err); // 500 error
         }
@@ -60,10 +61,11 @@ exports.update = function (req, res) {
 }
 
 /** removeEmp function to get Emp by id. */
-exports.delete = function (req, res) {
-    Emp.removeById({_id: req.params.id}, function(err, result) {
+exports.delete = function (condition, res) {
+    Emp.removeById(condition, function(err, result) {
         if (!err) {
-            return res.json(result);
+            // return res.json(result);
+            res.redirect('/getAllUser');
         } else {
             console.log(err);
             return res.send(err); // 500 error

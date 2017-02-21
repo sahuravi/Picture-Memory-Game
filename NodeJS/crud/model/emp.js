@@ -15,11 +15,11 @@ empSchema.statics = {
     getById: function(id, callback) {
         this.findById(id, callback);
     },
-    updateById: function(id, updateData, callback) {
-        this.update(id, {$set: updateData}, callback);
+    updateById: function(condition, updateData, callback) {
+        this.update(condition, {$set: updateData}, callback);
     },
-    remove: function(removeData, callback) {
-         this.remove(removeData, callback);
+    removeById: function(condition, callback) {
+         this.remove(condition, callback);
     },
     create: function(data, callback) {
         var user = new this(data);

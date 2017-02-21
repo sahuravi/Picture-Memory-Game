@@ -1,0 +1,10 @@
+
+<table style="border: 1px solid">
+<% for(let i=0; i < users.length; i++) { %>
+   <tr>
+     <td style="border: 1px solid; width: 100px;"><%= users[i].name %></td>
+     <td style="border: 1px solid; width: 150px;"><%= users[i].organization %></td>
+     <td style="border: 1px solid; width: 150px;"><a href="updateUser/<%=users[i]._id%>">Update</a> | <a href="deletebyid/<%=users[i]._id%>">Delete</a></td>
+   </tr>
+<% } %>
+</table>
