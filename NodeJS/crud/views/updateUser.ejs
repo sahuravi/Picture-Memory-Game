@@ -1,8 +1,10 @@
 <div>
     <form action="updatebyid" method="post">
         <div>Name: </div> <div><input type="text" name='username' value="<%=name %>"/></div>
+        <br/>
         <div>Organization: </div> <div><input type="text" name='company' value="<%=organization %>"/></div>
         <input type="hidden" name="userid" value="<%=_id%>"/>
+        <br/>
         <input type="submit" value="Update"/>
     </form>
 </div>

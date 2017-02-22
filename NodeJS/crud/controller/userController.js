@@ -1,6 +1,6 @@
 const Emp = require("../model/emp").emp;
 
-exports.create = function (req, res) {
+exports.create = (req, res) => {
     let user = {
          name: req.body.username,
          organization: req.body.organization
@@ -17,12 +17,12 @@ exports.create = function (req, res) {
 };
 
 /** getEmp function to get Emp by id. */
-exports.getUser = function (userid, res, callback) {
+exports.getUser = (userid, res, callback) => {
     Emp.getById(userid, callback);
 };
 
 /** getEmp function to get Emp by id. */
-exports.getById = function (userid, res) {
+exports.getById = (userid, res) => {
     Emp.getById(userid, function(err, user) {
         if (!err) {
             return res.json(user);
@@ -33,7 +33,7 @@ exports.getById = function (userid, res) {
 };
 
 /** getEmp function to get Emp by id. */
-exports.getAll = function (req, res) {
+exports.getAll = (req, res) => {
     Emp.getAll({}, function(err, result) {
         if (!err) {
             return res.render('users', {users: result});
@@ -44,7 +44,7 @@ exports.getAll = function (req, res) {
 };
 
 /** updateEmp function to get Emp by id. */
-exports.update = function (req, res) {
+exports.update = (req, res) => {
     let user = {};
     user.name = req.body.username;
     user.organization = req.body.company;
@@ -61,7 +61,7 @@ exports.update = function (req, res) {
 }
 
 /** removeEmp function to get Emp by id. */
-exports.delete = function (condition, res) {
+exports.delete = (condition, res) => {
     Emp.removeById(condition, function(err, result) {
         if (!err) {
             // return res.json(result);

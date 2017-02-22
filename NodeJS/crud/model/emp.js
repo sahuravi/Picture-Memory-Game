@@ -27,6 +27,7 @@ empSchema.statics = {
     }
 };
 
+//mongoose.model('modelName', schema);
 let emp = mongoose.model('emp', empSchema);
 
 module.exports = {
