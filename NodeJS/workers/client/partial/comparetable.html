@@ -1,0 +1,14 @@
+<table class="table">
+	<thead>
+	  <tr>
+	    <th>Property</th>
+	    <th ng-repeat="phone in comparisionData.phonesCompared">{{phone.name}}</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr ng-repeat="(prop,value) in comparisionData.comparision">
+	    <td>{{prop}}
+	    <td ng-repeat="val in value track by $index">{{val}}</td>
+	  </tr>
+	</tbody>
+</table>
