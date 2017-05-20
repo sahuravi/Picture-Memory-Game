@@ -65,19 +65,18 @@ myApp.run(['$rootScope', '$http', function ($rootScope, $http) {
     //     });
 }])
 
-myApp.controller('WorkerController', ['$rootScope', '$scope', '$element', function ($rootScope, $scope, $element) {
+myApp.controller('WorkerController', ['$rootScope', '$scope', '$element', '$timeout', function ($rootScope, $scope, $element, $timeout) {
 
     //console.log($rootScope.workersData);
     $scope.selectedWorker = null;
     $scope.workAssigned = false;
+    $scope.taskName = null;
+    $scope.taskDuration = null;
 
-    $rootScope.workersData.forEach(function (element) {
-        element.status = element.taskAssigned === "" ? "Available" : "Busy";
-    });
-    console.log($rootScope.workersData);
+    let workersArray = $rootScope.workersData;
 
     $scope.assignWorker = function (worker) {
-        if (worker.status === "Available") {
+        if (worker.taskAssigned === "") {
             $scope.workAssigned = true;
             $scope.selectedWorker = worker;
             return;
@@ -88,6 +87,19 @@ myApp.controller('WorkerController', ['$rootScope', '$scope', '$element', functi
     }
 
     $scope.assignTask = function () {
-
+        
+        $rootScope.workersData.forEach(function (worker) {
+            
+            if (worker.mobileNumber === $scope.selectedWorker.mobileNumber) {
+                worker.taskAssigned = $scope.taskName;
+                worker.taskDuration = $scope.taskDuration;
+                (function (worker) {
+                    $timeout(function () {
+                        worker.taskAssigned = "";
+                        delete worker.taskDuration;
+                    }, parseInt(worker.taskDuration) * 1000);
+                })(worker);
+            }
+        });
     }
 }]);
