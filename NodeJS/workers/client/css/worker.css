@@ -1,0 +1,32 @@
+.outer-div {
+    border: 1px solid green;
+    margin: 10px;
+    max-height: 360px;
+    overflow: auto;
+}
+
+.worker-div {
+    border: 1px solid gray;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.worker-div:hover {
+    background: palevioletred;
+}
+
+.name-span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.mobile-span {
+    float: right;
+}
+
+.worker-name {
+    font-size: 20px;
+    font-weight: 600;
+}

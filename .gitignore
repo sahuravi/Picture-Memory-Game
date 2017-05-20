@@ -12,3 +12,4 @@ target
 
 *.project
 *.classpath
+NodeJS/workers/.vscode/launch.json
