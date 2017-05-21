@@ -24,17 +24,16 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="page-header p-3">
-            <h4 class="display-6">Worker List:</h4>
-        </div>
-    </div>
+
 
     <div class="spin-container" ng-class="{'d-none': !isLoading}">
         <i class="fa fa-spinner fa-spin fa-3x"></i>
     </div>
 
     <div class="container m-b" ng-controller="WorkerController">
+
+        <h4 class="p-t-10">Worker List:</h4>
+
         <div class="row marketing" ng-if="workersData.length">
             <div class="col-lg-12 col-xl-12 col-md-12 outer-div">
                 <div class="worker-div " ng-repeat="worker in workersData" ng-click="assignWorker(worker,$event)">
