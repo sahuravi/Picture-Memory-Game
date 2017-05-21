@@ -1,38 +1,4 @@
-/*.ng-enter {
-  -webkit-transition: 1s;
-  transition: 1s;
-  
-  margin-left: 100%;
-}
 
-.ng-enter-active {
-  margin-left: 0;
-}
-
-.ng-leave {
-  -webkit-transition: 1s;
-  transition: 1s;
-  
-  margin-left: 0;
-}
-
-.ng-leave-active {
-  margin-left: 100%;
-}
-
-.ng-move {
-  -webkit-transition: 1s;
-  transition: 1s;
-  
-  background: gold;
-}
-
-.ng-move-active {
-  background: #fff;
-}*/
-.d-none{
-    display: none;
-}
 .spin-container {
     top: 0;
     left: 0;
@@ -61,8 +27,9 @@
     transition:all linear 0.5s;
 }
 
-.worker-div:hover {
-    background: palevioletred;
+.worker-div:hover,
+.worker-div:active {
+    background:rgba(255,0,0,0.4);
 }
 
 .name-span {
@@ -77,4 +44,18 @@
 .worker-name {
     font-size: 20px;
     font-weight: 600;
+}
+
+.selected {
+    background:rgba(255,0,0,0.5);
+}
+.deselected {
+    background-color:#ffffff;
+}
+
+.m-b {
+    margin-bottom: 20px; 
+}
+.d-none{
+    display: none;
 }

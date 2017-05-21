@@ -19,9 +19,18 @@ myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'worke
             console.log(error);
         });
 
-    $scope.assignWorker = function (worker) {
+    $scope.assignWorker = function (worker,$event) {
+        let workerDivs = $event.currentTarget.parentElement.children ;
+        let workersLen = workerDivs.length;
+        for(let index=0; index < workersLen ; index++){
+            workerDivs[index].classList.add("deselected");
+        }
+        $event.currentTarget.classList.remove("deselected");
+        $event.currentTarget.classList.add("selected");
+        
         if (worker.taskAssigned === "") {
             $scope.workAssigned = true;
+            
             $scope.selectedWorker = worker;
             return;
         } else {
