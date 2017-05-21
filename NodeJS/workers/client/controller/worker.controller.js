@@ -14,7 +14,7 @@ myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'worke
         .then((workersData) => {
             $rootScope.isLoading = false;
             $scope.workersData = workersData;
-            $scope.startCountdonw();
+            $scope.assignTask(true);
         })
         .catch((error) => {
             console.log(error);
@@ -40,29 +40,24 @@ myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'worke
         }
     }
 
-    $scope.assignTask = function () {
+    $scope.assignTask = function (initial) {
         $scope.workersData.forEach(function (worker) {
-            if (worker.mobileNumber === $scope.selectedWorker.mobileNumber) {
-                worker.taskAssigned = $scope.taskName;
-                worker.taskDuration = $scope.taskDuration;
-                (function (worker) {
-                    $timeout(function () {
-                        worker.taskAssigned = "";
-                        delete worker.taskDuration;
-                    }, parseInt(worker.taskDuration) * 1000);
-                })(worker);
+            if (!initial) {
+                if (worker.mobileNumber === $scope.selectedWorker.mobileNumber) {
+                    worker.taskAssigned = $scope.taskName;
+                    worker.taskDuration = $scope.taskDuration;
+                }
             }
+            $scope.startCountdown(worker);
         });
     }
 
-    $scope.startCountdonw = function () {
-        $scope.workersData.forEach(function (worker) {
-            (function (worker) {
-                $timeout(function () {
-                    worker.taskAssigned = "";
-                    delete worker.taskDuration;
-                }, parseInt(worker.taskDuration) * 1000);
-            })(worker);
-        });
+    $scope.startCountdown = function (worker) {
+        (function (worker) {
+            $timeout(function () {
+                worker.taskAssigned = "";
+                delete worker.taskDuration;
+            }, parseInt(worker.taskDuration) * 1000);
+        })(worker);
     }
 }]);

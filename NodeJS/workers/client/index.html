@@ -3,7 +3,8 @@
 
 <head>
     <title>Supervisor Portal</title>
-    <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/worker.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -30,7 +31,7 @@
         <i class="fa fa-spinner fa-spin fa-3x"></i>
     </div>
 
-    <div class="container m-b" ng-controller="WorkerController">
+    <div class="container m-b" ng-controller="WorkerController" ng-hide="isLoading">
 
         <h4 class="p-t-10">Worker List:</h4>
 
@@ -50,8 +51,8 @@
                     <input type="text" name='taskName' ng-model="taskName" ng-required="true"><br/><br/> Task duration (In
                     Seconds):
                     <br/>
-                    <input type="text" name='time' ng-model="taskDuration" ng-required="true"><br/><br/>
-                    <button ng-click="assignTask()" class="btn btn-primary" ng-disabled="myForm.$invalid"> Assign Task</button>
+                    <input type="number" name='time' ng-model="taskDuration" ng-required="true"><br/><br/>
+                    <button ng-click="assignTask()" class="btn btn-primary" ng-disabled="myForm.$invalid"><span class="glyphicon glyphicon-tasks"></span>&nbsp; Assign Task</button>
                 </form>
             </div>
         </div>
