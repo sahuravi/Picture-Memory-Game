@@ -4,7 +4,7 @@ myApp.run(['$rootScope', function ($rootScope) {
 }]);
 
 myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'workerService', '$element', function ($rootScope, $scope, $timeout, workerService, $element) {
-    
+
     $scope.selectedWorker = null;
     $scope.workAssigned = false;
     $scope.taskName = null;
@@ -14,23 +14,24 @@ myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'worke
         .then((workersData) => {
             $rootScope.isLoading = false;
             $scope.workersData = workersData;
+            $scope.startCountdonw();
         })
         .catch((error) => {
             console.log(error);
         });
 
-    $scope.assignWorker = function (worker,$event) {
-        let workerDivs = $event.currentTarget.parentElement.children ;
+    $scope.assignWorker = function (worker, $event) {
+        let workerDivs = $event.currentTarget.parentElement.children;
         let workersLen = workerDivs.length;
-        for(let index=0; index < workersLen ; index++){
+        for (let index = 0; index < workersLen; index++) {
             workerDivs[index].classList.add("deselected");
         }
         $event.currentTarget.classList.remove("deselected");
         $event.currentTarget.classList.add("selected");
-        
+
         if (worker.taskAssigned === "") {
             $scope.workAssigned = true;
-            
+
             $scope.selectedWorker = worker;
             return;
         } else {
@@ -51,6 +52,17 @@ myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'worke
                     }, parseInt(worker.taskDuration) * 1000);
                 })(worker);
             }
+        });
+    }
+
+    $scope.startCountdonw = function () {
+        $scope.workersData.forEach(function (worker) {
+            (function (worker) {
+                $timeout(function () {
+                    worker.taskAssigned = "";
+                    delete worker.taskDuration;
+                }, parseInt(worker.taskDuration) * 1000);
+            })(worker);
         });
     }
 }]);
