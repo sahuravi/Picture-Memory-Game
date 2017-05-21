@@ -1,14 +1,18 @@
-let myApp = angular.module('workerApp', []);
+let myApp = angular.module('workerApp', ['ngAnimate']);
+myApp.run(['$rootScope', function ($rootScope) {
+    $rootScope.isLoading = true;
+}]);
 
-myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'workerService', function ($rootScope, $scope, $timeout, workerService) {
-
+myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'workerService', '$element', function ($rootScope, $scope, $timeout, workerService, $element) {
+    
     $scope.selectedWorker = null;
     $scope.workAssigned = false;
     $scope.taskName = null;
     $scope.taskDuration = null;
-    
+
     workerService.getWorkersData()
         .then((workersData) => {
+            $rootScope.isLoading = false;
             $scope.workersData = workersData;
         })
         .catch((error) => {

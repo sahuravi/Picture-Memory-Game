@@ -1,3 +1,49 @@
+/*.ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  
+  margin-left: 100%;
+}
+
+.ng-enter-active {
+  margin-left: 0;
+}
+
+.ng-leave {
+  -webkit-transition: 1s;
+  transition: 1s;
+  
+  margin-left: 0;
+}
+
+.ng-leave-active {
+  margin-left: 100%;
+}
+
+.ng-move {
+  -webkit-transition: 1s;
+  transition: 1s;
+  
+  background: gold;
+}
+
+.ng-move-active {
+  background: #fff;
+}*/
+.d-none{
+    display: none;
+}
+.spin-container {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+}
+
 .outer-div {
     border: 1px solid green;
     margin: 10px;
@@ -11,6 +57,8 @@
     margin-bottom: 5px;
     margin-top: 5px;
     cursor: pointer;
+    height: 66px;
+    transition:all linear 0.5s;
 }
 
 .worker-div:hover {
