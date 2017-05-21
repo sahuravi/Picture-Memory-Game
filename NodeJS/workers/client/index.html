@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Supervisor Portal</title>
     <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/worker.css" />
@@ -14,14 +15,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+
 <body ng-app="workerApp">
-    
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cotton-o-Mill</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header p-3">
+            <h4 class="display-6">Worker List:</h4>
+        </div>
+    </div>
+
     <div class="spin-container" ng-class="{'d-none': !isLoading}">
         <i class="fa fa-spinner fa-spin fa-3x"></i>
     </div>
-    
+
     <div class="container m-b" ng-controller="WorkerController">
-        <div class="row marketing"  ng-if="workersData.length" >
+        <div class="row marketing" ng-if="workersData.length">
             <div class="col-lg-12 col-xl-12 col-md-12 outer-div">
                 <div class="worker-div " ng-repeat="worker in workersData" ng-click="assignWorker(worker,$event)">
                     <worker-directive></worker-directive>
@@ -31,11 +45,12 @@
         <div class="row marketing">
             <div class="col-lg-12 col-xl-12 col-md-12 assign-div" ng-show="workAssigned">
                 <br/>
-                <p>Assign task to <span class="worker-name">'{{selectedWorker.name}}'</span></p>
+                <p><span class="worker-name">Assign task to '{{selectedWorker.name}}'</span></p>
                 <form name="myForm">
                     Task Name: <br/>
-                    <input type="text" name='taskName' ng-model="taskName" ng-required="true"><br/><br/>
-                    Task duration (In Seconds):<br/>
+                    <input type="text" name='taskName' ng-model="taskName" ng-required="true"><br/><br/> Task duration (In
+                    Seconds):
+                    <br/>
                     <input type="text" name='time' ng-model="taskDuration" ng-required="true"><br/><br/>
                     <button ng-click="assignTask()" class="btn btn-primary" ng-disabled="myForm.$invalid"> Assign Task</button>
                 </form>
