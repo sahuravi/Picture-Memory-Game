@@ -1,8 +1,3 @@
-let myApp = angular.module('workerApp', ['ngAnimate']);
-myApp.run(['$rootScope', function ($rootScope) {
-    $rootScope.isLoading = true;
-}]);
-
 myApp.controller('WorkerController', ['$rootScope', '$scope', '$timeout', 'workerService', '$element', function ($rootScope, $scope, $timeout, workerService, $element) {
 
     $scope.selectedWorker = null;
