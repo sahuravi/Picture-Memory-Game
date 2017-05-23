@@ -4,17 +4,18 @@
 <head>
     <title>Supervisor Portal</title>
     
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/worker.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.js"></script>
     <script src="app.js"></script>
-    <script src="controller/worker.controller.js"></script>
+    <script src="data/workers.json"></script>
     <script src="service/workerService.js"></script>
     <script src="directive/worker-directive.js"></script>
-    <script src="controller/workers.json"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="controller/worker.controller.js"></script>
 </head>
 
 
@@ -38,8 +39,8 @@
 
         <div class="row marketing" ng-if="workersData.length">
             <div class="col-lg-12 col-xl-12 col-md-12 outer-div">
-                <div class="worker-div " ng-repeat="worker in workersData" ng-click="assignWorker(worker,$event)">
-                    <worker-directive></worker-directive>
+                <div class="worker-div " ng-repeat="worker in workersData">
+                    <worker-directive worker-detail="worker" availability="assignWorker"></worker-directive>
                 </div>
             </div>
         </div>

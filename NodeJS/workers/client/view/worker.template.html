@@ -1,7 +1,9 @@
-<div>
-    <span class="name-span">{{worker.name}}</span>
-    <span class="mobile-span">{{worker.mobileNumber}}</span>
-</div>
-<div>
-    <span>{{worker.taskAssigned === ""? "Available": worker.taskAssigned}}</span>
+<div ng-click="availability()(workerDetail, $event)">
+    <div>
+        <span class="name-span">{{workerDetail.name}}</span>
+        <span class="mobile-span">{{workerDetail.mobileNumber}}</span>
+    </div>
+    <div>
+        <span>{{workerDetail.taskAssigned === ""? "Available": workerDetail.taskAssigned}}</span>
+    </div>
 </div>
