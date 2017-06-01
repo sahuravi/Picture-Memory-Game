@@ -14,3 +14,4 @@ target
 *.classpath
 NodeJS/workers/.vscode/launch.json
 NodeJS/workers/web.config
+NodeJS/chat/.vscode/launch.json
