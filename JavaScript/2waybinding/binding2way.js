@@ -20,7 +20,6 @@ let myObj = {};
                     for (let index = 0; index < elements.length; index++) {
                         elements[index].value = newValue;
                     }
-                    this.temp = newValue;
                 },
                 get: function () {
                     return elements[0].value;
