@@ -5,17 +5,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.2/socket.io.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        debugger;
+        
         var socket = io('http://localhost:9000');
-        socket.on('news', function (data) {debugger;
-            
+        socket.on('news', function (data) {
             $('#content').html(data.data);
         });
     </script>
 </head>
 
 <body>
-    <div id="content"></div>
+    <p id="content">Rav i Sah    gfjlsfjlu</p>
 </body>
 
 </html>
