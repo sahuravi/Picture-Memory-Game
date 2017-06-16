@@ -1,10 +1,12 @@
 function largestSubArray(arr) {
-    
+
     let len = arr.length;
     let results = [];
 
-    for (let i = 0; i < len / 2; i++) {debugger;
-        for (let j = i + 1; j < len / 2; j++) {debugger;
+    for (let i = 0; i < len / 2; i++) {
+        debugger;
+        for (let j = i + 1; j < len / 2; j++) {
+            debugger;
             let leftStart = i;
             let leftCounter = j + 1;
             let rightStart = leftCounter;
@@ -30,3 +32,16 @@ function largestSubArray(arr) {
 
 let arr = [3, 2, 7, 1, 8, 3];
 largestSubArray(arr);
+
+function getOddOccurrence(ar, ar_size) {
+    let i;
+    let res = 0;
+    for (i = 0; i < ar_size; i++) {
+        res = res ^ ar[i];
+    }
+    return res;
+}
+
+let ar = [2, 3, 5, 4, 5, 2, 4, 3, 5, 2, 4, 4, 2];
+let n = ar.length;
+console.log(occur.getOddOccurrence(ar, n));
