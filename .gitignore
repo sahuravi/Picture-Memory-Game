@@ -15,3 +15,4 @@ target
 NodeJS/workers/.vscode/launch.json
 NodeJS/workers/web.config
 NodeJS/chat/.vscode/launch.json
+JavaScript/practice/.vscode/launch.json
