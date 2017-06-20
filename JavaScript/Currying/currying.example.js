@@ -15,3 +15,5 @@ function sum() {
 
     return func;
 }
+
+console.log(sum(2, 3, 4).toString());
