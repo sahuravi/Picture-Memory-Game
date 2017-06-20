@@ -4,9 +4,7 @@ function largestSubArray(arr) {
     let results = [];
 
     for (let i = 0; i < len / 2; i++) {
-        debugger;
         for (let j = i + 1; j < len / 2; j++) {
-            debugger;
             let leftStart = i;
             let leftCounter = j + 1;
             let rightStart = leftCounter;
@@ -44,4 +42,4 @@ function getOddOccurrence(ar, ar_size) {
 
 let ar = [2, 3, 5, 4, 5, 2, 4, 3, 5, 2, 4, 4, 2];
 let n = ar.length;
-console.log(occur.getOddOccurrence(ar, n));
+console.log(getOddOccurrence(ar, n));
