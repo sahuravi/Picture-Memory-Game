@@ -30,7 +30,7 @@ io.on('connection', function (socket) {
 });
 
 app.get('/', (req, res) => {
-    res.render('index.html', {data: "ravi"});
+    res.send('index.html');
     // fs.readFile(__dirname + '/test.txt', (err, data) => {
     //     if (err) {
     //         res.writeHead(500);
