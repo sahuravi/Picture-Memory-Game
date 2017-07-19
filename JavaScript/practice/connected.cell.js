@@ -1,15 +1,11 @@
-// var arr = [[0, 0, 1, 1, 0],
+// var arr = [
+// [0, 0, 1, 1, 0],
 // [0, 1, 0, 1, 0],
 // [0, 1, 0, 0, 1],
 // [0, 0, 0, 0, 0]
 // [1, 0, 1, 1, 0]];
 
-var arr = [[1, 1, 0, 0, 0],
-[0, 1, 0, 0, 1],
-[1, 0, 0, 1, 1],
-[0, 0, 0, 0, 0],
-[1, 0, 1, 0, 1]];
-getMaximumConnectedCells(arr);
+
 
 function getMaximumConnectedCells(arr) {
     let maxConnected = 0;
@@ -22,7 +18,8 @@ function getMaximumConnectedCells(arr) {
             }
         }
     }
-    console.log(maxConnected);
+
+    return maxConnected;
 }
 
 function getConnectedSize(arr, row, column) {
@@ -32,12 +29,16 @@ function getConnectedSize(arr, row, column) {
     if (arr[row][column] === 0) {
         return 0;
     }
-    arr[row][column] = 0;
+
+    if (arr[row][column] === "visited") {
+        return 0;
+    }
+    arr[row][column] = "visited";
     let size = 1;
 
     for (let r = row - 1; r <= row + 1; r++) {
         for (let c = column - 1; c <= column + 1; c++) {
-            if (r !== row && c !== column) {
+            if (!(r == row && c == column)) {
                 size = size + getConnectedSize(arr, r, c);
             }
         }
@@ -45,3 +46,12 @@ function getConnectedSize(arr, row, column) {
 
     return size;
 }
+
+var arr =
+    [[1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0]];
+
+getMaximumConnectedCells(arr);
