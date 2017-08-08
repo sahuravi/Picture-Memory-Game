@@ -23,3 +23,4 @@ function changeBase(number, base) {
     console.log(arr.join(""));
 }
 changeBase(8, 2);
+
