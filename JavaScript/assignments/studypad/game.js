@@ -7,6 +7,7 @@ var Source = "#boxcard";
 var container = $("#boxcard");
 var basePath = 'Study/tutorial/JavaScript/assignments/studypad/images/';
 
+
 var ImgSource = [
     "1.jpg",
     "2.jpg",
@@ -111,13 +112,8 @@ $(function() {
     ShuffleImages();
 });
 
-function generateRandom() {
-
-
-    // http://stackoverflow.com/questions/962802#962890
-
-
-    a = shuffle(a);
+function generateRandomArray(ofLength, fromLength) {
+    return shuffle(getArray(fromLength)).splice(0, ofLength);
 }
 
 function shuffle(array) {
