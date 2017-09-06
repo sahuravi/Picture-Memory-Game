@@ -110,3 +110,31 @@ $(function() {
     $("#boxcard div").click(OpenCard);
     ShuffleImages();
 });
+
+function generateRandom() {
+
+
+    // http://stackoverflow.com/questions/962802#962890
+
+
+    a = shuffle(a);
+}
+
+function shuffle(array) {
+    var tmp, current, top = array.length;
+    if (top)
+        while (--top) {
+            current = Math.floor(Math.random() * (top + 1));
+            tmp = array[current];
+            array[current] = array[top];
+            array[top] = tmp;
+        }
+    return array;
+}
+
+function getArray(length) {
+    for (var a = [], i = 0; i < length;) {
+        a[i] = ++i;
+    }
+    return a;
+}
