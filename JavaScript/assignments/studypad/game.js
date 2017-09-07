@@ -18,13 +18,24 @@ $(function () {
         .done(function (instance) {
             let $textContainer = $('.text-container');
             let $timerSpan = $textContainer.find('.timer');
-            let counter = 20;
+            let counter = 5;
+            $timerSpan.text(counter);
             $textContainer.show();
 
-            setInterval(() => {
-                $timerSpan.text(counter);
-                counter--;
+            let time = setInterval(() => {
+                $timerSpan.text(--counter);
+                if (!counter) {
+                    stopTimer();
+                }
             }, 1000);
+
+            function stopTimer() {
+                clearInterval(time);
+                $textContainer.hide();
+                $("#boxcard div img").css('display', 'none');
+                $("#targetImg").css('display', 'block');
+            }
+
             $("#boxcard div").show();
             $("#boxcard").removeClass("loading");
             console.log('all images successfully loaded');
@@ -41,12 +52,13 @@ $(function () {
 
     $("#boxcard div").click(OpenCard);
 
-    setTimeout(() => {
+    /* setTimeout(() => {
         $("#boxcard div img").css('display', 'none');
         $("#targetImg").css('display', 'block');
-    }, 2000);
+    }, 2000); */
     //ShuffleImages();
 });
+
 
 function generateRandomArray(ofLength, fromLength) {
     return shuffle(getArray(fromLength)).splice(0, ofLength);
