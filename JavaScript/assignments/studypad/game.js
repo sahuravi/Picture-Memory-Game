@@ -3,6 +3,7 @@ var ImgOpened = "";
 var Counter = 0;
 var ImgFound = 0;
 var targetImage = "";
+var imageLength = 0;
 
 var Source = "#boxcard";
 var container = $("#boxcard");
@@ -46,6 +47,7 @@ $(function () {
         });
 
     ImgSource = generateRandomArray(9, 25);
+    imageLength = ImgSource.length;
 
     $.each(ImgSource, function (i, val) {
         container.append("<div id=card" + i + "><img src=" + basePath + val + ".jpg />");
@@ -130,8 +132,9 @@ function OpenCard() {
     Counter++;
     $("#counter").html("" + Counter);
 
-    if (ImgFound == ImgSource.length) {
-        $("#counter").prepend('<span id="success">You Found All Pictues With </span>');
+    if (ImgFound == imageLength) {
+        $("#targetImg").css("display", "none");
+        $("#boxcard").prepend('<span id="success">You Found All Pictues With </span>');
     }
     // }
 }
