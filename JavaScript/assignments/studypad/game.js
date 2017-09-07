@@ -68,6 +68,7 @@ function updateTargetImageContainer() {
     targetImage = `images/${number}.jpg`;;
     $targetImg.find('img').attr('src', targetImage);
     $targetImg.css('display', 'block');
+    $('.text-2').css("display", "block");
 }
 
 function generateRandomArray(ofLength, fromLength) {
@@ -119,7 +120,8 @@ function showImage() {
 
     if (matchedImageCounter == imgArrLength) {
         $targetImg.css("display", "none");
-        $imgGridContainer.prepend('<span id="success">You matched all the pictrues</span>');
+        $('.text-2').css("display", "none");
+        $imgGridContainer.prepend('<p id="success-text">You matched all the pictrues</p>');
     }
 }
 
@@ -136,6 +138,7 @@ function resetGame() {
     $(`${imgGridContainerId} div`).css("visibility", "visible");
     $("#targetImg img").attr("src", "#");
     $targetImg.css("display", "none");
+    $('.text-2').css("display", "none");
     matchedImageCounter = 0;
     startGame();
     return false;
