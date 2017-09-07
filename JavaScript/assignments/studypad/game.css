@@ -83,12 +83,19 @@ body {
     width: 32px;
 }
 
-.text-container {
+.text-container,
+.text-3,
+.text-4 {
     width: 100%;
     text-align: center;
     top: 60px;
     color: black;
     font-size: 14px;
+}
+
+.text-3,
+.text-4 {
+    display: none;
 }
 
 .text-2 {

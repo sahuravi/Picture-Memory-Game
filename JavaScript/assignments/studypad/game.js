@@ -4,6 +4,7 @@
 var matchedImageCounter = 0;
 var targetImage = "";
 var imgArrLength = 0;
+var countDown = 20;
 
 var imgGridContainerId = "#img-grid-container";
 var $imgGridContainer = $(imgGridContainerId);
@@ -25,13 +26,13 @@ function startGame() {
         .done(function(instance) {
             let $textContainer = $('.text-container');
             let $timerSpan = $textContainer.find('.timer');
-            let counter = 5;
-            $timerSpan.text(counter);
+            // let countDown = 5;
+            $timerSpan.text(countDown);
             $textContainer.show();
 
             let time = setInterval(() => {
-                $timerSpan.text(--counter);
-                if (!counter) {
+                $timerSpan.text(--countDown);
+                if (!countDown) {
                     stopTimer();
                 }
             }, 1000);
@@ -106,10 +107,16 @@ function showImage() {
         let currentOpenedImage = $currentElement.attr("src");
 
         if (targetImage != currentOpenedImage) {
+            $('.text-3').css("display", "block");
             setTimeout(function() {
+                $('.text-3').fadeOut("slow");;
                 $currentElement.slideUp('fast');
-            }, 400);
+            }, 500);
         } else {
+            $('.text-4').css("display", "block");
+            setTimeout(function() {
+                $('.text-4').fadeOut("slow");
+            }, 500);
             updateTargetImageContainer();
             matchedImageCounter++;
         }
@@ -140,6 +147,7 @@ function resetGame() {
     $targetImg.css("display", "none");
     $('.text-2').css("display", "none");
     matchedImageCounter = 0;
+    countDown = 20;
     startGame();
     return false;
 }
