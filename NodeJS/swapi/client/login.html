@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SIMS Builder</title>
+    <title>SW</title>
     <base href="/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" type="text/css" href="./login.css">
 </head>
 
 <body>
 
-    <div class="modal fade display-class" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade display-class" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="loginmodal-container">
                 <h1>Login to Your Account</h1><br>
@@ -28,6 +30,18 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+    <div class="wrapper">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Login</h2>
+            <input type="text" class="form-control" name="user" placeholder="Email Address" required="" autofocus="" /><br>
+            <input type="password" class="form-control" name="pass" placeholder="Password" required="" />
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </form>
     </div>
 </body>
 

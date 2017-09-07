@@ -34,11 +34,11 @@ router.post('/login', (req, res) => {
 
     request('http://swapi.co/api/people/', function(error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body)
+            //console.log(body)
             let users = JSON.parse(body).results;
             for (user of users) {
                 if (username === user.name && password === user.birth_year) {
-                    res.send("Logged in successfull.");
+                    res.send("Logged in successfully.");
                 }
             }
             res.send("either username or password is incorrect.");

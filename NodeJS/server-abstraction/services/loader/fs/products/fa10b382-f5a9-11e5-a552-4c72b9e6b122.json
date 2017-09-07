@@ -1,0 +1,725 @@
+{
+  "id": "fa10b382-f5a9-11e5-a552-4c72b9e6b122",
+  "definition": {
+    "learning-objectives": {
+      "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language": {
+        "learning-objectives": {}
+      },
+      "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects": {
+        "learning-objectives": {}
+      },
+      "Showcase how to implement data structures like Lists and Dictionaries in Python": {
+        "learning-objectives": {}
+      },
+      "Use Python documentation to debug errors": {
+        "learning-objectives": {}
+      },
+      "Implement built-in Python functions and classes to reuse code": {
+        "learning-objectives": {}
+      }
+    },
+    "tags": {
+      "Reading": {
+        "tags": {}
+      },
+      "Videos": {
+        "tags": {}
+      },
+      "Practice": {
+        "tags": {}
+      }
+    }
+  },
+  "items":{
+    "default" : [
+      {
+        "name": "Module 0 - Course Intro and Pretest",
+        "item-type": "folder",
+        "item-code": "Module_0_-_Course_Intro_and_Pretest",
+        "sub-type": "default",
+        "items": [
+          {
+            "name": "V1: Intro To The Course",
+            "item-type": "resource",
+            "resource": "RE_0001",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/V1:_Intro_To_The_Course",
+            "tracking": true
+          },
+          {
+            "name": "Q1: Eiffel Tower",
+            "item-type": "resource",
+            "resource": "RE_0002",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/Q1:_Eiffel_Tower",
+            "tracking": true
+          },
+          {
+            "name": "Q2: Bank Balance",
+            "item-type": "resource",
+            "resource": "RE_0003",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/Q2:_Bank_Balance",
+            "tracking": true
+          },
+          {
+            "name": "Q3: Never-ending Loop",
+            "item-type": "resource",
+            "resource": "RE_0004",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/Q3:_Never-ending_Loop",
+            "tracking": true
+          },
+          {
+            "name": "Q4: Nested For Loops",
+            "item-type": "resource",
+            "resource": "RE_0005",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/Q4:_Nested_For_Loops",
+            "tracking": true
+          },
+          {
+            "name": "V2: Intro to Variables",
+            "item-type": "resource",
+            "resource": "RE_0006",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/V2:_Intro_to_Variables",
+            "tracking": true
+          },
+          {
+            "name": "V3: Practicing Variables",
+            "item-type": "resource",
+            "resource": "RE_0007",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/V3:_Practicing_Variables",
+            "tracking": true
+          },
+          {
+            "name": "V4: If statement",
+            "item-type": "resource",
+            "resource": "RE_0008",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/V4:_If_statement",
+            "tracking": true
+          },
+          {
+            "name": "V5: Practicing If statements",
+            "item-type": "resource",
+            "resource": "RE_0009",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/V5:_Practicing_If_statements",
+            "tracking": true
+          },
+          {
+            "name": "T1: If statement syntax and examples",
+            "item-type": "resource",
+            "resource": "RE_0010",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/T1:_If_statement_syntax_and_examples",
+            "tracking": true
+          },
+          {
+            "name": "T2: For and While Loops",
+            "item-type": "resource",
+            "resource": "RE_0011",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/T2:_For_and_While_Loops",
+            "tracking": true
+          },
+          {
+            "name": "V6: Loops in Action",
+            "item-type": "resource",
+            "resource": "RE_0012",
+            "item-code": "Module_0_-_Course_Intro_and_Pretest/V6:_Loops_in_Action",
+            "tracking": true
+          }
+        ]
+      },
+      {
+        "name": "Module 1 - Defining and Using Functions",
+        "item-type": "folder",
+        "item-code": "Module_1_-_Defining_and_Using_Functions",
+        "sub-type": "default",
+        "items": [
+          {
+            "name": "V7: Lesson Intro",
+            "item-type": "resource",
+            "resource": "RE_0013",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V7:_Lesson_Intro",
+            "tracking": true
+          },
+          {
+            "name": "T3: Installing Python on Windows",
+            "item-type": "resource",
+            "resource": "RE_0014",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T3:_Installing_Python_on_Windows",
+            "tracking": true
+          },
+          {
+            "name": "V8: Running Python For The First Time on Windows",
+            "item-type": "resource",
+            "resource": "RE_0015",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V8:_Running_Python_For_The_First_Time_on_Windows",
+            "tracking": true
+          },
+          {
+            "name": "V9: Installing and Running Python on a Mac",
+            "item-type": "resource",
+            "resource": "RE_0016",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V9:_Installing_and_Running_Python_on_a_Mac",
+            "tracking": true
+          },
+          {
+            "name": "T4: Check Your Python Version",
+            "item-type": "resource",
+            "resource": "RE_0017",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T4:_Check_Your_Python_Version",
+            "tracking": true
+          },
+          {
+            "name": "T5: Change IDLE Preferences",
+            "item-type": "resource",
+            "resource": "RE_0018",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T5:_Change_IDLE_Preferences",
+            "tracking": true
+          },
+          {
+            "name": "T6: Fun with Python; Import Statements",
+            "item-type": "resource",
+            "resource": "RE_0019",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T6:_Fun_with_Python;_Import_Statements",
+            "tracking": true
+          },
+          {
+            "name": "T7: Drawing Turtles",
+            "item-type": "resource",
+            "resource": "RE_0020",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T7:_Drawing_Turtles",
+            "tracking": true
+          },
+          {
+            "name": "T8: Drawing Some More Turtles",
+            "item-type": "resource",
+            "resource": "RE_0021",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T8:_Drawing_Some_More_Turtles",
+            "tracking": true
+          },
+          {
+            "name": "V9: Thinking About The Code We Have Written",
+            "item-type": "resource",
+            "resource": "RE_0022",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V9:_Thinking_About_The_Code_We_Have_Written",
+            "tracking": true
+          },
+          {
+            "name": "Q5: Reflecting On Functions",
+            "item-type": "resource",
+            "resource": "RE_0023",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/Q5:_Reflecting_On_Functions",
+            "tracking": true
+          },
+          {
+            "name": "Q6: What Questions Do You Have",
+            "item-type": "resource",
+            "resource": "RE_0024",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/Q6:_What_Questions_Do_You_Have",
+            "tracking": true
+          },
+          {
+            "name": "Q7: Improve the Code for Squares",
+            "item-type": "resource",
+            "resource": "RE_0025",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/Q7:_Improve_the_Code_for_Squares",
+            "tracking": true
+          },
+          {
+            "name": "V10: Creating Our Own Functions",
+            "item-type": "resource",
+            "resource": "RE_0026",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V10:_Creating_Our_Own_Functions",
+            "tracking": true
+          },
+          {
+            "name": "Q8: Why do we need functions?",
+            "item-type": "resource",
+            "resource": "RE_0027",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/Q8:_Why_do_we_need_functions?",
+            "tracking": true
+          },
+          {
+            "name": "T9: Functions Can Return Things",
+            "item-type": "resource",
+            "resource": "RE_0028",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/T9:_Functions_Can_Return_Things",
+            "tracking": true
+          },
+          {
+            "name": "V11: Writing a Factorial Function",
+            "item-type": "resource",
+            "resource": "RE_0029",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V11:_Writing_a_Factorial_Function",
+            "tracking": true
+          },
+          {
+            "name": "V12: Behind the Scenes",
+            "item-type": "resource",
+            "resource": "RE_0030",
+            "item-code": "Module_1_-_Defining_and_Using_Functions/V12:_Behind_the_Scenes",
+            "tracking": true
+          }
+        ]
+      },
+      {
+        "name": "Module 2 - An Introduction to Classes",
+        "item-type": "folder",
+        "item-code": "Module_2_-_An_Introduction_to_Classes",
+        "sub-type": "default",
+        "items": [
+          {
+            "name": "[Headshot Video] Intro to the Lesson",
+            "item-type": "resource",
+            "resource": "RE_0031",
+            "item-code": "Module_2_-_An_Introduction_to_Classes/[Headshot_Video]_Intro_to_the_Lesson",
+            "tracking": true
+          }
+        ]
+      },
+      {
+        "name": "Module 3 - Data Structures",
+        "item-type": "folder",
+        "item-code": "Module_3_-_Data_Structures",
+        "sub-type": "default",
+        "items": [
+          {
+            "name": "[Headshot Video] Intro to the Lesson",
+            "item-type": "resource",
+            "resource": "RE_0032",
+            "item-code": "Module_3_-_Data_Structures/[Headshot_Video]_Intro_to_the_Lesson",
+            "tracking": true
+          }
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "generic": {
+      "RE_0001": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0001_V1_Intro_To_The_Course.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0002": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0002_Q1_Eiffel_Tower.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0003": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0003_Q2_Bank_Balance.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0004": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0004_Q3_Never_Ending_Loop.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0005": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0005_Q4_Nested_For_Loops.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0006": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0006_V2_Intro_to_Variables.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0007": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0007_V3_Practicing_Variables.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0008": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0008_V4_If_Statement.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0009": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0009_V5_Practicing_If_Statements.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0010": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0010_T1_If_statement_syntax_and_examples.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0011": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0011_T2_For_and_While_Loops.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0012": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0012_V6_Loops_in_Action.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0013": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0101_V7_Lesson_Intro.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0014": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0102_T3_Installing_Python_on_Windows.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0015": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0103_V8_Running_Python_First_Time_Windows.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0016": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0104_V9_Installing_Python_Mac.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0017": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0105_T4_Check_Your_Python_Version.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0018": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0106_T5_Change_IDLE_Preference.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0019": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0107_T6_Import_Statements.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0020": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0108_T7_Drawing_Turtles.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0021": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0109_T8_Drawing_More_Turtles.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0022": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0110_V9_Thinking_About_the_Code.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects","Use Python documentation to debug errors"
+        ]
+      },
+      "RE_0023": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0111_Q5_Reflecting_On_Functions.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0024": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0112_Q6_What_Questions_Do_You_Have.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0025": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0113_Q7_Improve_the_Code_for_Squares.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0026": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0114_V10_Creating_Our_Own_Functions.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects","Use Python documentation to debug errors"
+        ]
+      },
+      "RE_0027": {
+        "sub-type": "md",
+        "tags": [
+          "Practice"
+        ],
+        "md": {
+          "url": "0115_Q8_Why_do_we_need_functions.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0028": {
+        "sub-type": "md",
+        "tags": [
+          "Reading"
+        ],
+        "md": {
+          "url": "0116_T9_Functions_Can_Return_Things.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects"
+        ]
+      },
+      "RE_0029": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0117_V11_Writing_a_Factorial_Function.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects","Use Python documentation to debug errors"
+        ]
+      },
+      "RE_0030": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "0118_V12_Behind_the_Scenes.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "Demonstrate how to use programming ideas like functions and classes while building multiple Python projects","Use Python documentation to debug errors"
+        ]
+      },
+      "RE_0031": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "todo.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      },
+      "RE_0032": {
+        "sub-type": "md",
+        "tags": [
+          "Videos"
+        ],
+        "md": {
+          "url": "todo.md"
+        },
+        "description": "",
+        "learning-objectives": [
+          "(Prerequisites) Display knowledge of variables, if statements, loops in any programming language"
+        ]
+      }
+    },
+    "test": {},
+    "ebook": {}
+  },
+  "meta": {
+    "schema": 1,
+    "title": "Basics of Programming, Using Python",
+    "author": "Kunal Chawla",
+    "thumbnailsmall": "cover.jpg",
+    "thumbnaillarge": "cover.jpg",
+    "description": "",
+    "producttype": "courseware",
+    "gexfUrl": "modules/adaptive-tuning/data/python.gexf"
+  }
+}
