@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Picture Memory Game</title>
-    <base href="/">
+    <!-- <base href="/Study/tutorial/JavaScript/assignments/studypad/"> -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="Study\tutorial\JavaScript\assignments\studypad\game.css" rel="stylesheet" type="text/css">
+    <link href="game.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -19,11 +19,13 @@
         </span>
         <div id="boxcard"></div>
         <br>
-        <div id='targetImg'><img src="Study/tutorial/JavaScript/assignments/studypad/images/8.jpg"></div>
+        <div class="text-container">Images will disappear after <span class="timer"></span> seconds(s)</div>
+        <div id='targetImg'><img src="images/8.jpg"></div>
     </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="Study\tutorial\JavaScript\assignments\studypad\game.js"></Script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="game.js"></Script>
 
 </html>
