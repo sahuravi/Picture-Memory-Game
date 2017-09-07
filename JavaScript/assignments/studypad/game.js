@@ -1,23 +1,28 @@
-var BoxOpened = "";
-var ImgOpened = "";
-var Counter = 0;
-var ImgFound = 0;
+// var BoxOpened = "";
+// var ImgOpened = "";
+// var placeImageCounter = 0;
+var matchedImageCounter = 0;
 var targetImage = "";
-var imageLength = 0;
+var imgArrLength = 0;
 
-var Source = "#boxcard";
-var container = $("#boxcard");
-var basePath = 'images/';
+var imgGridContainerId = "#img-grid-container";
+var $imgGridContainer = $(imgGridContainerId);
+var imgFolder = 'images/';
+var $targetImg = $("#targetImg");
 
 
-var ImgSource = [];
+var imgNameList = [];
 
-$(function () {
-    $("#boxcard").addClass("loading");
-    $("#boxcard div").hide();
+$(function() {
+    startGame();
+});
 
-    $('#boxcard').imagesLoaded()
-        .done(function (instance) {
+function startGame() {
+    $imgGridContainer.addClass("loading");
+    $("#img-grid-container div").hide();
+
+    $imgGridContainer.imagesLoaded()
+        .done(function(instance) {
             let $textContainer = $('.text-container');
             let $timerSpan = $textContainer.find('.timer');
             let counter = 5;
@@ -34,41 +39,35 @@ $(function () {
             function stopTimer() {
                 clearInterval(time);
                 $textContainer.hide();
-                $("#boxcard div img").css('display', 'none');
+                $("#img-grid-container div img").css('display', 'none');
                 updateTargetImageContainer();
             }
 
-            $("#boxcard div").show();
-            $("#boxcard").removeClass("loading");
+            $("#img-grid-container div").show();
+            $imgGridContainer.removeClass("loading");
             console.log('all images successfully loaded');
         })
-        .fail(function () {
+        .fail(function() {
             console.log('all images loaded, at least one is broken');
         });
 
-    ImgSource = generateRandomArray(9, 25);
-    imageLength = ImgSource.length;
+    imgNameList = generateRandomArray(9, 25);
+    imgArrLength = imgNameList.length;
 
-    $.each(ImgSource, function (i, val) {
-        container.append("<div id=card" + i + "><img src=" + basePath + val + ".jpg />");
+    $.each(imgNameList, function(i, val) {
+        $imgGridContainer.append(`<div id=card${i}><img src=${imgFolder + val}.jpg />`);
     });
 
-    $("#boxcard div").click(OpenCard);
-
-    /* setTimeout(() => {
-        $("#boxcard div img").css('display', 'none');
-        $("#targetImg").css('display', 'block');
-    }, 2000); */
-    //ShuffleImages();
-});
+    $("#img-grid-container div").click(showImage);
+}
 
 function updateTargetImageContainer() {
-    $targetImg = $("#targetImg");
-    let number = getRandomNumber(ImgSource);
-    ImgSource.splice(ImgSource.indexOf(number), 1);
+    $targetImg = $targetImg;
+    let number = getRandomNumber(imgNameList);
+    imgNameList.splice(imgNameList.indexOf(number), 1);
     targetImage = `images/${number}.jpg`;;
     $targetImg.find('img').attr('src', targetImage);
-    $("#targetImg").css('display', 'block');
+    $targetImg.css('display', 'block');
 }
 
 function generateRandomArray(ofLength, fromLength) {
@@ -88,55 +87,40 @@ function shuffle(array) {
 }
 
 function getArray(length) {
-    for (var a = [], i = 0; i < length;) {
-        a[i] = ++i;
+    let arr = [];
+    for (let i = 0; i < length;) {
+        arr[i] = ++i;
     }
-    return a;
+    return arr;
 }
 
-function OpenCard() {
-    var id = $(this).attr("id");
+function showImage() {
+    let id = $(this).attr("id");
+    let $currentElement = $("#" + id + " img");
 
-    if ($("#" + id + " img").is(":hidden")) {
-        $(Source + " div").unbind("click", OpenCard);
+    if ($currentElement.is(":hidden")) {
+        $(imgGridContainerId + " div").unbind("click", showImage);
 
-        $("#" + id + " img").slideDown('fast');
+        $currentElement.slideDown('fast');
+        let currentOpenedImage = $currentElement.attr("src");
 
-        /* if (ImgOpened == "") {
-            BoxOpened = id;
-            ImgOpened = $("#" + id + " img").attr("src");
-            setTimeout(function () {
-                $(Source + " div").bind("click", OpenCard)
-            }, 300);
-        } else { */
-        CurrentOpened = $("#" + id + " img").attr("src");
-        if (targetImage != CurrentOpened) {
-            setTimeout(function () {
-                $("#" + id + " img").slideUp('fast');
-                $("#" + BoxOpened + " img").slideUp('fast');
-                BoxOpened = "";
-                ImgOpened = "";
+        if (targetImage != currentOpenedImage) {
+            setTimeout(function() {
+                $currentElement.slideUp('fast');
             }, 400);
         } else {
-            $("#" + id + " img").parent().css("visibility", "hidden");
-            // $("#" + BoxOpened + " img").parent().css("visibility", "hidden");
             updateTargetImageContainer();
-            ImgFound++;
-            BoxOpened = "";
-            ImgOpened = "";
+            matchedImageCounter++;
         }
-        setTimeout(function () {
-            $(Source + " div").bind("click", OpenCard)
+        setTimeout(function() {
+            $(imgGridContainerId + " div").bind("click", showImage)
         }, 400);
     }
-    Counter++;
-    $("#counter").html("" + Counter);
 
-    if (ImgFound == imageLength) {
-        $("#targetImg").css("display", "none");
-        $("#boxcard").prepend('<span id="success">You Found All Pictues With </span>');
+    if (matchedImageCounter == imgArrLength) {
+        $targetImg.css("display", "none");
+        $imgGridContainer.prepend('<span id="success">You matched all the pictrues</span>');
     }
-    // }
 }
 
 function getRandomNumber(arr) {
@@ -147,36 +131,12 @@ function RandomFunction(MaxValue, MinValue) {
     return Math.round(Math.random() * (MaxValue - MinValue) + MinValue);
 }
 
-function ResetGame() {
-    ShuffleImages();
-    $(Source + " div img").hide();
-    $(Source + " div").css("visibility", "visible");
-    Counter = 0;
-    $("#success").remove();
-    $("#counter").html("" + Counter);
-    BoxOpened = "";
-    ImgOpened = "";
-    ImgFound = 0;
+function resetGame() {
+    $(`${imgGridContainerId}`).children().remove();
+    $(`${imgGridContainerId} div`).css("visibility", "visible");
+    $("#targetImg img").attr("src", "#");
+    $targetImg.css("display", "none");
+    matchedImageCounter = 0;
+    startGame();
     return false;
 }
-/* 
-function ShuffleImages() {
-    var ImgAll = container.children();
-    var ImgThis = $(Source + " div:first-child");
-    var ImgArr = new Array();
-
-    for (var i = 0; i < ImgAll.length; i++) {
-        ImgArr[i] = $("#" + ImgThis.attr("id") + " img").attr("src");
-        ImgThis = ImgThis.next();
-    }
-
-    ImgThis = $(Source + " div:first-child");
-
-    for (var z = 0; z < ImgAll.length; z++) {
-        var RandomNumber = RandomFunction(0, ImgArr.length - 1);
-
-        $("#" + ImgThis.attr("id") + " img").attr("src", ImgArr[RandomNumber]);
-        ImgArr.splice(RandomNumber, 1);
-        ImgThis = ImgThis.next();
-    }
-} */

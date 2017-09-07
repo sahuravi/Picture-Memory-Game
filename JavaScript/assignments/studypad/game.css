@@ -9,12 +9,12 @@ body {
     background: #CCC;
 }
 
-#picbox {
+#game-container {
     margin: 0px auto;
     width: 312px;
 }
 
-#boxcard {
+#img-grid-container {
     position: absolute;
     top: 10%;
     left: 10%;
@@ -24,7 +24,7 @@ body {
     width: 312px;
 }
 
-#boxcard div,
+#img-grid-container div,
 #targetImg {
     float: left;
     width: 100px;
@@ -47,19 +47,19 @@ body {
     display: none;
 }
 
-#boxcard div img {
+#img-grid-container div img {
     display: block;
     border-radius: 10px;
     z-index: 3;
 }
 
-#boxbuttons {
+#button-container {
     text-align: center;
     margin: 20px;
     display: block;
 }
 
-#boxbuttons .button {
+#button-container .button {
     display: block;
     text-transform: capitalize;
     background: #B1B1B1;
@@ -70,7 +70,7 @@ body {
     color: black;
 }
 
-#boxbuttons .button:hover {
+#button-container .button:hover {
     background: #999;
 }
 
