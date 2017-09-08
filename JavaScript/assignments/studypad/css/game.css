@@ -72,7 +72,7 @@ body::after {
 #button-container .button {
     display: block;
     text-transform: capitalize;
-    background: #e85656;
+    background: rgba(123, 106, 99, 0.25);
     padding: 5px 20px;
     margin: 5px;
     border-radius: 5px;
