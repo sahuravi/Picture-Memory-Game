@@ -1,8 +1,21 @@
 body {
     font: 18px Verdana;
     color: #FFF;
-    background: #CCC;
+    height: 100%;
+    background: url('images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
+/* 
+body::after {
+    height: 100%;
+    background: url('images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+} */
 
 .item-center {
     position: absolute;
@@ -30,11 +43,11 @@ body {
     height: 100px;
     margin: 1px;
     padding: 0px;
-    border: 1px solid green;
+    border: 1px solid #8b6b6b;
     cursor: pointer;
     border-radius: 2px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .5);
-    background: #B1B1B1;
+    background: rgba(123, 106, 99, 0.25);
     z-index: 2;
 }
 
@@ -59,7 +72,7 @@ body {
 #button-container .button {
     display: block;
     text-transform: capitalize;
-    background: #B1B1B1;
+    background: #e85656;
     padding: 5px 20px;
     margin: 5px;
     border-radius: 5px;
