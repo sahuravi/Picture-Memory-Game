@@ -1,6 +1,3 @@
-// var BoxOpened = "";
-// var ImgOpened = "";
-// var placeImageCounter = 0;
 var matchedImageCounter = 0;
 var targetImage = "";
 var imgArrLength = 0;
@@ -14,19 +11,29 @@ var $targetImg = $("#targetImg");
 
 var imgNameList = [];
 
-$(function() {
+$(function () {
     startGame();
 });
 
 function startGame() {
-    $imgGridContainer.addClass("loading");
+
+    imgNameList = generateRandomArray(9, 25);
+    imgArrLength = imgNameList.length;
+
+    $.each(imgNameList, function (i, val) {
+        $imgGridContainer.append(`<div id=card${i}><img src=${imgFolder + val}.jpg />`);
+    });
+
+    $("#img-grid-container div").click(showImage);
+
+    $imgGridContainer.find('div').addClass('loader');
     $("#img-grid-container div").hide();
 
     $imgGridContainer.imagesLoaded()
-        .done(function(instance) {
+        .done(function (instance) {
+            // Here initial message is shown for 20 seconds to user to memorize the images.
             let $textContainer = $('.text-container');
             let $timerSpan = $textContainer.find('.timer');
-            // let countDown = 5;
             $timerSpan.text(countDown);
             $textContainer.show();
 
@@ -45,23 +52,15 @@ function startGame() {
             }
 
             $("#img-grid-container div").show();
-            $imgGridContainer.removeClass("loading");
+            $imgGridContainer.find('div').removeClass("loader");
             console.log('all images successfully loaded');
         })
-        .fail(function() {
-            console.log('all images loaded, at least one is broken');
+        .fail(function () {
+            console.log('All images not loaded.');
         });
-
-    imgNameList = generateRandomArray(9, 25);
-    imgArrLength = imgNameList.length;
-
-    $.each(imgNameList, function(i, val) {
-        $imgGridContainer.append(`<div id=card${i}><img src=${imgFolder + val}.jpg />`);
-    });
-
-    $("#img-grid-container div").click(showImage);
 }
 
+// This function get the random image from earlier show images.
 function updateTargetImageContainer() {
     $targetImg = $targetImg;
     let number = getRandomNumber(imgNameList);
@@ -72,12 +71,14 @@ function updateTargetImageContainer() {
     $('.text-2').css("display", "block");
 }
 
+// This function generate an array of random numbers from an array.
 function generateRandomArray(ofLength, fromLength) {
     return shuffle(getArray(fromLength)).splice(0, ofLength);
 }
 
+// This function suffle my initial array i.e of length 25.
 function shuffle(array) {
-    var tmp, current, top = array.length;
+    let tmp, current, top = array.length;
     if (top)
         while (--top) {
             current = Math.floor(Math.random() * (top + 1));
@@ -88,6 +89,7 @@ function shuffle(array) {
     return array;
 }
 
+// This function generate an array of given length.
 function getArray(length) {
     let arr = [];
     for (let i = 0; i < length;) {
@@ -96,6 +98,7 @@ function getArray(length) {
     return arr;
 }
 
+// This is the handler function which is called on each click event on div.
 function showImage() {
     let id = $(this).attr("id");
     let $currentElement = $("#" + id + " img");
@@ -103,24 +106,24 @@ function showImage() {
     if ($currentElement.is(":hidden")) {
         $(imgGridContainerId + " div").unbind("click", showImage);
 
-        $currentElement.slideDown('fast');
+        $currentElement.slideDown('slow');
         let currentOpenedImage = $currentElement.attr("src");
 
         if (targetImage != currentOpenedImage) {
             $('.text-3').css("display", "block");
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.text-3').fadeOut("slow");;
-                $currentElement.slideUp('fast');
+                $currentElement.slideUp('slow');
             }, 500);
         } else {
             $('.text-4').css("display", "block");
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.text-4').fadeOut("slow");
             }, 500);
             updateTargetImageContainer();
             matchedImageCounter++;
         }
-        setTimeout(function() {
+        setTimeout(function () {
             $(imgGridContainerId + " div").bind("click", showImage)
         }, 400);
     }
@@ -132,14 +135,12 @@ function showImage() {
     }
 }
 
+// This function return a random number from the array.
 function getRandomNumber(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function RandomFunction(MaxValue, MinValue) {
-    return Math.round(Math.random() * (MaxValue - MinValue) + MinValue);
-}
-
+// This functio is called when we click on reset game butto to reset the game.
 function resetGame() {
     $(`${imgGridContainerId}`).children().remove();
     $(`${imgGridContainerId} div`).css("visibility", "visible");

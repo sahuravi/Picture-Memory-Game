@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font: 18px Verdana;
     color: #FFF;
@@ -76,11 +71,9 @@ body {
     background: #999;
 }
 
-.loading {
+#img-grid-container div.loader {
     z-index: 2000;
-    background: url(http://1.bp.blogspot.com/-nfXo9GWbDtM/VOn0vr4yLMI/AAAAAAAABCA/dDNgd7_QCFo/s1600/block-loader.gif) no-repeat center center;
-    height: 32px;
-    width: 32px;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/loading.gif') no-repeat center center;
 }
 
 .text-container,
@@ -91,6 +84,10 @@ body {
     top: 60px;
     color: black;
     font-size: 14px;
+}
+
+.text-container {
+    display: none;
 }
 
 .text-3,
